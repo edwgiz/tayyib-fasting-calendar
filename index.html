@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <link rel="stylesheet" href="https://unpkg.com/smart-webcomponents@26.0.0/source/styles/smart.default.css" type="text/css"/>
+  <link rel="stylesheet" href="https://unpkg.com/smart-webcomponents@26.0.0/source/styles/smart.ui.default.css" type="text/css"/>
+  <script type="module">
+    import 'https://unpkg.com/smart-webcomponents@26.0.0/source/modules/smart.button.js';
+    import 'https://unpkg.com/smart-webcomponents@26.0.0/source/modules/smart.tooltip.js';
+  </script>
+
+  <title>Tayyib Fasting Calendar</title>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: var(--smart-base-background-color-dark);
+      color: var(--smart-primary-color);
+      font-size: larger;
+    }
+
+    header {
+      text-align: center;
+      margin: 1ch 1ch 3ch;
+      white-space: nowrap;
+    }
+
+    section.fasting-reason > ul > li {
+      margin-top: 0.75ch;
+    }
+
+    blockquote {
+      display: block;
+      padding: 0;
+      margin: 0;
+      font-style: italic;
+    }
+
+    blockquote::before {
+      content: "- ";
+    }
+
+    li:has(>q) {
+      color: var(--smart-base-100);
+    }
+
+    li > q {
+      display: block;
+      padding: 0;
+      margin: 0;
+      color: var(--smart-primary-color);
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 5ch;
+
+      section {
+        display: grid;
+        grid-template-columns: repeat(7, 10ch);
+
+        div {
+          padding: 0.3ch;
+          text-align: center;
+        }
+
+        div.calendar-grid-header {
+          background-color: var(--smart-border);
+        }
+
+        div.calendar-grid-cell {
+          border-top-style: solid;
+          border-top-color: var(--smart-border);
+          border-top-width: 1px;
+
+          div {
+            padding: 0;
+          }
+        }
+      }
+    }
+
+
+    #prev-month-button, #next-month-button {
+      width: 22ch;
+    }
+
+    #current-month-label {
+      display: inline-block;
+      width: 22ch;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    footer {
+      font-size: small;
+    }
+
+    footer > section > h4 {
+      margin-top: 3ch;
+      margin-bottom: 0;
+    }
+
+    smart-tooltip div.smart-tooltip-content {
+      background-color: var(--smart-secondary-lighter) !important;
+      border-color: var(--smart-secondary-lighter) !important;
+      padding: 0.5ch !important;
+    }
+
+    smart-tooltip div.smart-tooltip-content::after {
+      --smart-tooltip-arrow-color: var(--smart-secondary-lighter);
+    }
+
+    smart-tooltip div.smart-tooltip-content > ul {
+      margin: 0;
+      padding-left: 0;
+      list-style-type: none;
+      list-style-position: inside;
+    }
+  </style>
+</head>
+<body theme="dark">
+<h1 style="margin-bottom: 1em; text-align: center">Tayyib Fasting Calendar</h1>
+<section class="fasting-reason">
+  <ul>
+    <li>
+      <q>Every deed of the son of Adam is for him except fasting; it is for Me, and I shall reward for it.</q>
+      <blockquote>Sahih al-Bukhari, Hadith 1904</blockquote>
+      <blockquote>Sahih Muslim, Hadith 1151</blockquote>
+    </li>
+  </ul>
+</section>
+<header>
+  <smart-button id="prev-month-button"></smart-button>
+  ⏮ <span id="current-month-label">Current Month</span> ⏭
+  <smart-button id="next-month-button"></smart-button>
+</header>
+<main>
+  <section id="calendar-grid-cells"></section>
+</main>
+
+<footer>
+  <section class="fasting-reason" id="fasting-reason-ramadan">
+    <h4>Ramadan</h4>
+    <ul>
+      <li>
+        <q>Islam is built upon five: the testimony that none has the right to be worshipped but Allah and that Muhammad
+          is the Messenger of Allah, establishing prayer, giving zakah, performing Hajj, and fasting Ramadan.</q>
+        <blockquote>Sahih al-Bukhari, Hadith 8</blockquote>
+        <blockquote>Sahih Muslim, Hadith 16</blockquote>
+      <li>
+        <q>Whoever fasts Ramadan out of faith and in the hope of reward, his previous sins will be forgiven.</q>
+        <blockquote>Sahih al-Bukhari, Hadith 38</blockquote>
+        <blockquote>Sahih Muslim, Hadith 760</blockquote>
+      </li>
+    </ul>
+  </section>
+  <section class="fasting-reason" id="fasting-reason-shawwal">
+    <h4>Six Days of Shawwal</h4>
+    <ul>
+      <li>
+        <q>Whoever fasts Ramadan and then follows it with six days of Shawwal, it is as if he fasted for a lifetime.</q>
+        <blockquote>Sahih Muslim, Hadith 1164</blockquote>
+      </li>
+      <li>
+        <q>Whoever fasts six days after Eid al-Fitr will have completed the year: whoever does a good deed will have ten
+          times the like thereof.</q>
+        <blockquote>Sunan Ibn Majah, Hadith 1715</blockquote>
+      </li>
+      <li>
+        <q>Whoever fasts the month of Ramadan and then follows it with six days of fasting in the month of Shawwal, it
+          will be as if he has fasted for the entire year.</q>
+        <blockquote>Sahih Muslim, Hadith 1164</blockquote>
+      </li>
+    </ul>
+  </section>
+  <section class="fasting-reason" id="fasting-reason-arafah-or-ashura">
+    <h4>Days of Arafah and Ashura</h4>
+    <ul>
+      <li>
+        Abu Qatada reported the Messenger (ﷺ) said:
+        <q> I seek from Allah that fasting on the day of 'Arafa may atone for the sins of the preceding and the coming
+          years, and I seek from Allah that fasting on the day of Ashura may atone for the sins of the preceding
+          year.</q>
+        <blockquote cite="https://sunnah.com/muslim:1162a">Sahih Muslim, Hadith 1162</blockquote>
+      </li>
+    </ul>
+  </section>
+  <section class="fasting-reason" id="fasting-reason-white-days">
+    <h4>White Days</h4>
+    <ul>
+      <li>
+        The Prophet Muhammad ﷺ advised Abu Dharr (RA):
+        <q>If you fast any part of the month, then fast the thirteenth, fourteenth and fifteenth.</q>
+        <blockquote>Jami` at-Tirmidhi, Hadith 761</blockquote>
+      </li>
+      <li>
+        The Messenger of Allah said Abu Dharr:
+        <q>Fasting three days of every month is like fasting for a lifetime.</q>
+        <blockquote>Sahih al-Bukhari, Hadith 1975</blockquote>
+        <blockquote>Sahih Muslim, Hadith 1162</blockquote>
+        <blockquote>Sunan an-Nasa'i, Hadith 2420</blockquote>
+        <blockquote>Sunan Ibn Majah, Hadith 1708</blockquote>
+      </li>
+      <li>
+        Abu Hurairah (RA) said:
+        <q>My close friend (the Prophet ﷺ) advised me to do three things: to fast three days of every month, pray two
+          rak‘ahs of Duha, and pray Witr before sleeping.</q>
+        <blockquote>Sahih al-Bukhari, Hadith 722</blockquote>
+        <blockquote>Sunan Abi Dawud, Hadith 1433</blockquote>
+      </li>
+    </ul>
+  </section>
+  <section class="fasting-reason" id="fasting-reason-monday-thursday">
+    <h4>Monday and Thursday</h4>
+    <ul>
+      <li>
+        This specific statement is narrated by Abu Hurairah:
+        <q>Deeds are presented on Mondays and Thursdays, and I love that my deeds be presented while I am fasting.</q>
+        <blockquote>Jami` at-Tirmidhi, Hadith 747</blockquote>
+        <blockquote>Sunan an-Nasa'i, Hadith 2358</blockquote>
+        <blockquote>Riyad as-Salihin, Book 9, Hadith 1256</blockquote>
+      </li>
+      <li>
+        The Prophet was asked about fasting on Monday, and he said:
+        <q>That is the day on which I was born and the day on which revelation came to me.</q>
+        <blockquote>Sahih Muslim, Hadith 1162</blockquote>
+      </li>
+      <li>
+        Aishah (RA) reported:
+        <q>The Prophet used to be keen to fast on Mondays and Thursdays.</q>
+        <blockquote>Jami` at-Tirmidhi, Hadith 745</blockquote>
+      </li>
+    </ul>
+  </section>
+</footer>
+
+<script>
+  const localDateTimeFormat = new Intl.DateTimeFormat(undefined, {
+    month: 'long',
+    year: 'numeric'
+  });
+  const locale = localDateTimeFormat.resolvedOptions().locale;
+
+  const now = new Date();
+  let month = new Date(now.getFullYear(), now.getMonth(), 1);
+  const d = document;
+  const prevMonthEl = d.getElementById('prev-month-button');
+  const currentMonthEl = d.getElementById('current-month-label');
+  const nextMonthEl = d.getElementById('next-month-button');
+
+  function updateMonthLabels() {
+    const prevMonth = new Date(now.getFullYear(), month.getMonth() - 1, 1);
+    const nextMonth = new Date(now.getFullYear(), month.getMonth() + 1, 1);
+    prevMonthEl.innerHTML = localDateTimeFormat.format(prevMonth);
+    currentMonthEl.textContent = localDateTimeFormat.format(month);
+    nextMonthEl.innerHTML = localDateTimeFormat.format(nextMonth);
+  }
+
+  prevMonthEl.addEventListener('click', _ => {
+    month = new Date(month.getFullYear(), month.getMonth() - 1, 1);
+    update();
+  });
+  nextMonthEl.addEventListener('click', _ => {
+    month = new Date(month.getFullYear(), month.getMonth() + 1, 1);
+    update();
+  });
+
+
+  function getFirstDayOfWeek() {
+    const region = locale.split('-')[1];
+    const sundayFirst = ['US', 'CA', 'AU', 'NZ', 'PH', 'JP', 'KR', 'TW', 'HK', 'SA', 'EG', 'IL'];
+    if (region && sundayFirst.includes(region.toUpperCase())) {
+      return 0;
+    }
+    return 1;// Default: Monday
+  }
+
+  let firstDayOfWeek = getFirstDayOfWeek();
+
+
+  const gridEl = d.getElementById('calendar-grid-cells');
+
+  function updateCalendarHeader() {
+    gridEl.innerHTML = '';
+    const weekdayFormat = new Intl.DateTimeFormat(locale, {
+      weekday: 'short'
+    });
+
+    for (let i = 0; i < 7; i++) {
+      const dayIndex = (i + firstDayOfWeek) % 7;
+      const date = new Date(2024, 0, dayIndex + 7);
+      const cellEl = d.createElement('div');
+      cellEl.classList.add("calendar-grid-header")
+      cellEl.textContent = weekdayFormat.format(date);
+      gridEl.appendChild(cellEl);
+    }
+  }
+
+  const idDateFormat = new Intl.DateTimeFormat(locale, {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  });
+  const gregorianDateFormat = new Intl.DateTimeFormat(locale, {
+    day: '2-digit',
+  });
+  const hijriDateFormat = new Intl.DateTimeFormat('en-u-ca-islamic-nu-latn', {
+    day: '2-digit',
+    month: "long",
+  });
+  const hijriMonthNumberFormat = new Intl.DateTimeFormat('en-u-ca-islamic-nu-latn', {
+    month: "2-digit",
+  });
+
+  function getFastingReasonTitle(elId) {
+    const fastingReasonEl = d.getElementById(elId);
+    return fastingReasonEl.firstElementChild.textContent;
+  }
+
+  function updateCalendarDates() {
+
+    let date = new Date(month.getFullYear(), month.getMonth(), month.getDate() - month.getDay() + firstDayOfWeek);
+
+    for (let i = gridEl.children.length - 1; i >= 7; i--) {
+      gridEl.children.item(i).remove();
+    }
+
+    while (date.getFullYear() * 1000 + date.getMonth() <= month.getFullYear() * 1000 + month.getMonth()) {
+      for (let i = 0; i < 7; i++) {
+        const id = 'calendar-grid-cell-' + idDateFormat.format(date);
+        const cellEl = d.createElement('div');
+        cellEl.id = id;
+        cellEl.classList.add('calendar-grid-cell');
+        cellEl.appendChild(d.createTextNode(gregorianDateFormat.format(date)));
+        const fastingReasons = [];
+        const hijriMonthNumber = hijriMonthNumberFormat.format(date);
+        {
+          const hijriStr = hijriDateFormat.format(date);
+          const hijriStrLength = hijriStr.length;
+          const hijriDate = hijriStr.substring(hijriStrLength - 2, hijriStrLength);
+          if (hijriMonthNumber === '09') {
+            fastingReasons.push('fasting-reason-ramadan');
+          }
+          if ((hijriMonthNumber === '12' && hijriDate === '09')// Day of Arafah
+            || (hijriMonthNumber === '01' && hijriDate === '10')// Day of Ashura
+          ) {
+            fastingReasons.push('fasting-reason-arafah-or-ashura');
+          }
+          if (date.getDay() === 1 || date.getDay() === 4) {
+            fastingReasons.push('fasting-reason-monday-thursday')
+          }
+          {
+            const hijriMonthEl = d.createElement('div');
+            hijriMonthEl.style.color = '#00b300';
+            hijriMonthEl.style.fontSize = 'small';
+            hijriMonthEl.textContent = hijriStr.substring(0, hijriStrLength - 3).replace('\.', '');
+            cellEl.appendChild(hijriMonthEl);
+          }
+          {
+            const hijriDateEl = d.createElement('div');
+            hijriDateEl.style.color = '#00ff00';
+            if (hijriDate === '13' || hijriDate === '14' || hijriDate === '15') {
+              fastingReasons.push('fasting-reason-white-days')
+            }
+            hijriDateEl.textContent = hijriDate;
+            cellEl.appendChild(hijriDateEl);
+          }
+        }
+        if (fastingReasons.length > 0) {
+          if (hijriMonthNumber === '10') {
+            fastingReasons.push('fasting-reason-shawwal');
+          }
+
+          const fastingEl = d.createElement('div');
+          fastingEl.style.color = '#ffff00';
+          fastingEl.style.fontSize = 'small';
+          fastingEl.textContent = 'Sunrise - Sunset';
+          cellEl.appendChild(fastingEl);
+
+          const tooltip = d.createElement('smart-tooltip');
+          tooltip.selector = id;
+          tooltip.position = 'bottom';
+          tooltip.arrow = true;
+          const tooltipContent = d.createElement('ul');
+          for (const fastingReason of fastingReasons) {
+            const fastingReasonEl = d.createElement('li')
+            fastingReasonEl.textContent = getFastingReasonTitle(fastingReason);
+            tooltipContent.appendChild(fastingReasonEl);
+          }
+          tooltip.appendChild(tooltipContent);
+          cellEl.appendChild(tooltip);
+        }
+        gridEl.appendChild(cellEl);
+        date = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
+      }
+    }
+  }
+
+
+  function update() {
+    updateMonthLabels();
+    updateCalendarDates();
+  }
+
+  updateCalendarHeader();
+  update();
+
+</script>
+</body>
+</html>
