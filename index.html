@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <link rel="stylesheet" href="https://unpkg.com/smart-webcomponents@26.0.0/source/styles/smart.default.css" type="text/css"/>
+  <link rel="stylesheet" href="https://unpkg.com/smart-webcomponents@26.0.0/source/styles/smart.dark-green.css" type="text/css"/>
   <link rel="stylesheet" href="https://unpkg.com/smart-webcomponents@26.0.0/source/styles/smart.ui.default.css" type="text/css"/>
   <script type="module">
     import 'https://unpkg.com/smart-webcomponents@26.0.0/source/modules/smart.button.js';
@@ -79,19 +80,42 @@
           div {
             padding: 0;
           }
+
+          div.calendar-grid-cell-hijri-month {
+            color: #00b300;
+            font-size: small;
+          }
+
+          div.calendar-grid-cell-hijri-date {
+            color: #00ff00;
+          }
         }
       }
     }
 
+    header {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
 
     #prev-month-button, #next-month-button {
       width: 22ch;
+      align-items: center;
+      --smart-ui-state-border-active: var(--smart-base-200) !important;
+      --smart-ui-state-active: var(--smart-base-200) !important;
+
+      button {
+        vertical-align: top;
+      }
     }
 
     #current-month-label {
       display: inline-block;
       width: 22ch;
       text-align: center;
+      vertical-align: center;
       white-space: nowrap;
     }
 
@@ -123,7 +147,7 @@
   </style>
 </head>
 <body theme="dark">
-<h1 style="margin-bottom: 1em; text-align: center">Tayyib Fasting Calendar</h1>
+<h1 style="text-align: center">Islamic Fasting Calendar</h1>
 <section class="fasting-reason">
   <ul>
     <li>
@@ -135,7 +159,7 @@
 </section>
 <header>
   <smart-button id="prev-month-button"></smart-button>
-  ⏮ <span id="current-month-label">Current Month</span> ⏭
+  <span id="current-month-label">Current Month</span>
   <smart-button id="next-month-button"></smart-button>
 </header>
 <main>
@@ -253,11 +277,11 @@
   const nextMonthEl = d.getElementById('next-month-button');
 
   function updateMonthLabels() {
-    const prevMonth = new Date(now.getFullYear(), month.getMonth() - 1, 1);
-    const nextMonth = new Date(now.getFullYear(), month.getMonth() + 1, 1);
-    prevMonthEl.innerHTML = localDateTimeFormat.format(prevMonth);
+    const prevMonth = new Date(month.getFullYear(), month.getMonth() - 1, 1);
+    const nextMonth = new Date(month.getFullYear(), month.getMonth() + 1, 1);
+    prevMonthEl.innerHTML = localDateTimeFormat.format(prevMonth) + '&nbsp; ◂◂';
     currentMonthEl.textContent = localDateTimeFormat.format(month);
-    nextMonthEl.innerHTML = localDateTimeFormat.format(nextMonth);
+    nextMonthEl.innerHTML = '▸▸ &nbsp;' + localDateTimeFormat.format(nextMonth);
   }
 
   prevMonthEl.addEventListener('click', _ => {
@@ -355,14 +379,13 @@
           }
           {
             const hijriMonthEl = d.createElement('div');
-            hijriMonthEl.style.color = '#00b300';
-            hijriMonthEl.style.fontSize = 'small';
+            hijriMonthEl.classList.add('calendar-grid-cell-hijri-month')
             hijriMonthEl.textContent = hijriStr.substring(0, hijriStrLength - 3).replace('\.', '');
             cellEl.appendChild(hijriMonthEl);
           }
           {
             const hijriDateEl = d.createElement('div');
-            hijriDateEl.style.color = '#00ff00';
+            hijriDateEl.classList.add('calendar-grid-cell-hijri-date')
             if (hijriDate === '13' || hijriDate === '14' || hijriDate === '15') {
               fastingReasons.push('fasting-reason-white-days')
             }
