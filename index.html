@@ -4,9 +4,12 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <link rel="stylesheet" href="https://unpkg.com/smart-webcomponents@26.0.0/source/styles/smart.default.css" type="text/css"/>
-  <link rel="stylesheet" href="https://unpkg.com/smart-webcomponents@26.0.0/source/styles/smart.dark-green.css" type="text/css"/>
-  <link rel="stylesheet" href="https://unpkg.com/smart-webcomponents@26.0.0/source/styles/smart.ui.default.css" type="text/css"/>
+  <link rel="stylesheet" href="https://unpkg.com/smart-webcomponents@26.0.0/source/styles/smart.default.css"
+        type="text/css"/>
+  <link rel="stylesheet" href="https://unpkg.com/smart-webcomponents@26.0.0/source/styles/smart.dark-green.css"
+        type="text/css"/>
+  <link rel="stylesheet" href="https://unpkg.com/smart-webcomponents@26.0.0/source/styles/smart.ui.default.css"
+        type="text/css"/>
   <script type="module">
     import 'https://unpkg.com/smart-webcomponents@26.0.0/source/modules/smart.button.js';
     import 'https://unpkg.com/smart-webcomponents@26.0.0/source/modules/smart.tooltip.js';
@@ -345,6 +348,40 @@
     return fastingReasonEl.firstElementChild.textContent;
   }
 
+  function isAllowedFastingDate(hijriMonthNumber, hijriDate) {
+    if (hijriMonthNumber === '10' && hijriDate === '01') {
+      /**
+       * Abu Sa‘id al-Khudri (RA) reported:
+       * “The Messenger of Allah ﷺ forbade fasting on two days: the Day of Fitr and the Day of Sacrifice.”
+       * — Sahih al-Bukhari, Hadith 1992
+       * — Sahih Muslim, Hadith 1137
+       */
+      return false;// Eid al-Fitr
+    } else if (hijriMonthNumber === '12') {
+      if (hijriDate === '10') {
+        /**
+         * Abu Sa‘id al-Khudri (RA) reported:
+         * “The Messenger of Allah ﷺ forbade fasting on two days: the Day of Fitr and the Day of Sacrifice.”
+         * — Sahih al-Bukhari, Hadith 1992
+         * — Sahih Muslim, Hadith 1137
+         */
+        return false;// Eid al-Ada
+      } else if (hijriDate === '11') {
+        /**
+         * The Prophet ﷺ said:
+         * “The days of Tashreeq are days of eating, drinking and remembrance of Allah.”
+         * — Sahih Muslim, Hadith 1141
+         */
+        return false;// Day of Tashreeq
+      } else if (hijriDate === '12') {
+        return false;// Day of Tashreeq
+      } else if (hijriDate === '13') {
+        return false;// Day of Tashreeq
+      }
+    }
+    return true;
+  }
+
   function updateCalendarDates() {
 
     let date = new Date(month.getFullYear(), month.getMonth(), month.getDate() - month.getDay() + firstDayOfWeek);
@@ -374,9 +411,6 @@
           ) {
             fastingReasons.push('fasting-reason-arafah-or-ashura');
           }
-          if (date.getDay() === 1 || date.getDay() === 4) {
-            fastingReasons.push('fasting-reason-monday-thursday')
-          }
           {
             const hijriMonthEl = d.createElement('div');
             hijriMonthEl.classList.add('calendar-grid-cell-hijri-month')
@@ -387,10 +421,17 @@
             const hijriDateEl = d.createElement('div');
             hijriDateEl.classList.add('calendar-grid-cell-hijri-date')
             if (hijriDate === '13' || hijriDate === '14' || hijriDate === '15') {
-              fastingReasons.push('fasting-reason-white-days')
+              if (isAllowedFastingDate(hijriMonthNumber, hijriDate)) {
+                fastingReasons.push('fasting-reason-white-days')
+              }
             }
             hijriDateEl.textContent = hijriDate;
             cellEl.appendChild(hijriDateEl);
+          }
+          if (date.getDay() === 1 || date.getDay() === 4) {
+            if (isAllowedFastingDate(hijriMonthNumber, hijriDate)) {
+              fastingReasons.push('fasting-reason-monday-thursday');
+            }
           }
         }
         if (fastingReasons.length > 0) {
