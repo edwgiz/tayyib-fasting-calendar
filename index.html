@@ -14,6 +14,7 @@
     import 'https://unpkg.com/smart-webcomponents@26.0.0/source/modules/smart.button.js';
     import 'https://unpkg.com/smart-webcomponents@26.0.0/source/modules/smart.tooltip.js';
   </script>
+  <script src="https://unpkg.com/suncalc@1.9.0/suncalc.js"></script>
 
   <title>Tayyib Fasting Calendar</title>
 
@@ -64,7 +65,7 @@
 
       section {
         display: grid;
-        grid-template-columns: repeat(7, 10ch);
+        grid-template-columns: repeat(7, 12ch);
 
         div {
           padding: 0.3ch;
@@ -91,6 +92,20 @@
 
           div.calendar-grid-cell-hijri-date {
             color: #00ff00;
+          }
+
+          div.calendar-grid-cell-fasting-undefined {
+            color: #b3b300;
+            font-size: small;
+
+            img.calendar-grid-cell-fasting-undefined-spinner {
+              width: 1.8ch;
+              height: 1.8ch;
+            }
+          }
+          div.calendar-grid-cell-fasting {
+            color: #ffff00;
+            font-size: small;
           }
         }
       }
@@ -266,6 +281,18 @@
 </footer>
 
 <script>
+  const geolocationPositionRepository = {
+    getAsString() {
+      return localStorage.getItem('geolocationPosition');
+    },
+    get() {
+      return JSON.parse(this.getAsString());
+    },
+    setAsString(str) {
+      localStorage.setItem('geolocationPosition', str);
+    },
+  };
+
   const localDateTimeFormat = new Intl.DateTimeFormat(undefined, {
     month: 'long',
     year: 'numeric'
@@ -301,7 +328,7 @@
     const region = locale.split('-')[1];
     const sundayFirst = ['US', 'CA', 'AU', 'NZ', 'PH', 'JP', 'KR', 'TW', 'HK', 'SA', 'EG', 'IL'];
     if (region && sundayFirst.includes(region.toUpperCase())) {
-      return 0;
+      return 0; // Sunday
     }
     return 1;// Default: Monday
   }
@@ -341,6 +368,11 @@
   });
   const hijriMonthNumberFormat = new Intl.DateTimeFormat('en-u-ca-islamic-nu-latn', {
     month: "2-digit",
+  });
+  const timeFormat = new Intl.DateTimeFormat(locale, {
+    hour: '2-digit',
+    hour12: false,
+    minute: '2-digit',
   });
 
   function getFastingReasonTitle(elId) {
@@ -389,6 +421,8 @@
     for (let i = gridEl.children.length - 1; i >= 7; i--) {
       gridEl.children.item(i).remove();
     }
+
+    const geolocationPosition = geolocationPositionRepository.get()
 
     while (date.getFullYear() * 1000 + date.getMonth() <= month.getFullYear() * 1000 + month.getMonth()) {
       for (let i = 0; i < 7; i++) {
@@ -440,9 +474,19 @@
           }
 
           const fastingEl = d.createElement('div');
-          fastingEl.style.color = '#ffff00';
-          fastingEl.style.fontSize = 'small';
-          fastingEl.textContent = 'Sunrise - Sunset';
+          if (geolocationPosition) {
+            fastingEl.classList.add('calendar-grid-cell-fasting')
+            const times = SunCalc.getTimes(date, geolocationPosition.latitude, geolocationPosition.longitude);
+            fastingEl.textContent = timeFormat.format(times.sunrise) + ' - ' + timeFormat.format(times.sunset);
+          } else {
+            fastingEl.classList.add('calendar-grid-cell-fasting-undefined')
+            fastingEl.appendChild(d.createTextNode('Sunrise '));
+            const spinnerEl = d.createElement("img");
+            spinnerEl.classList.add('calendar-grid-cell-fasting-undefined-spinner')
+            spinnerEl.src = 'spinner.svg';
+            fastingEl.appendChild(spinnerEl);
+            fastingEl.appendChild(d.createTextNode(' Sunset'));
+          }
           cellEl.appendChild(fastingEl);
 
           const tooltip = d.createElement('smart-tooltip');
@@ -472,6 +516,28 @@
 
   updateCalendarHeader();
   update();
+
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const prevPositionStr = geolocationPositionRepository.getAsString();
+      const currentPositionStr = JSON.stringify({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      });
+
+      if(currentPositionStr !== prevPositionStr) {
+        geolocationPositionRepository.setAsString(currentPositionStr);
+        updateCalendarDates();
+      }
+    },
+    (error) => {
+      console.error('Error getting location:', error);
+    },
+    {
+      enableHighAccuracy: true,
+      maximumAge: 0
+    }
+  );
 
 </script>
 </body>
