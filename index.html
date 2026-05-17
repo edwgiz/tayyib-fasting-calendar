@@ -111,6 +111,14 @@
                       font-size: small;
                   }
               }
+
+              div.calendar-grid-cell-today {
+                background-image: url("./moon-hand-drawn-circle-svgrepo-com.svg");
+                background-size: 80% 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-origin: content-box;
+              }
           }
       }
 
@@ -201,7 +209,7 @@
       }
 
       smart-button#change-location-default-button {
-        background-color: var(--smart-base-200)
+          background-color: var(--smart-base-200)
       }
 
       .leaflet-container {
@@ -384,6 +392,7 @@
   const locale = localDateTimeFormat.resolvedOptions().locale;
 
   const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   let month = new Date(now.getFullYear(), now.getMonth(), 1);
   const d = document;
   const prevMonthEl = d.getElementById('prev-month-button');
@@ -514,6 +523,9 @@
         const cellEl = d.createElement('div');
         cellEl.id = id;
         cellEl.classList.add('calendar-grid-cell');
+        if (!(date < today || today < date)) {
+          cellEl.classList.add('calendar-grid-cell-today')
+        }
         cellEl.appendChild(d.createTextNode(gregorianDateFormat.format(date)));
         const fastingReasons = [];
         const hijriMonthNumber = hijriMonthNumberFormat.format(date);
