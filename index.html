@@ -10,187 +10,258 @@
         type="text/css"/>
   <link rel="stylesheet" href="https://unpkg.com/smart-webcomponents@26.0.0/source/styles/smart.ui.default.css"
         type="text/css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" type="text/css"/>
   <script type="module">
     import 'https://unpkg.com/smart-webcomponents@26.0.0/source/modules/smart.button.js';
     import 'https://unpkg.com/smart-webcomponents@26.0.0/source/modules/smart.tooltip.js';
+    import 'https://unpkg.com/smart-webcomponents@26.0.0/source/modules/smart.window.js';
   </script>
   <script src="https://unpkg.com/suncalc@1.9.0/suncalc.js"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
   <title>Tayyib Fasting Calendar</title>
 
   <style>
-    body {
-      font-family: sans-serif;
-      background-color: var(--smart-base-background-color-dark);
-      color: var(--smart-primary-color);
-      font-size: larger;
-    }
+      body {
+          font-family: sans-serif;
+          background-color: var(--smart-base-background-color-dark);
+          color: var(--smart-primary-color);
+          font-size: larger;
+      }
 
-    header {
-      text-align: center;
-      margin: 1ch 1ch 3ch;
-      white-space: nowrap;
-    }
+      section.fasting-reason {
+          margin: 1ch 1ch 3ch;
+          white-space: nowrap;
+      }
 
-    section.fasting-reason > ul > li {
-      margin-top: 0.75ch;
-    }
+      section.fasting-reason > ul > li {
+          margin-top: 0.75ch;
+      }
 
-    blockquote {
-      display: block;
-      padding: 0;
-      margin: 0;
-      font-style: italic;
-    }
+      blockquote {
+          display: block;
+          padding: 0;
+          margin: 0;
+          font-style: italic;
+      }
 
-    blockquote::before {
-      content: "- ";
-    }
+      blockquote::before {
+          content: "- ";
+      }
 
-    li:has(>q) {
-      color: var(--smart-base-100);
-    }
+      li:has(>q) {
+          color: var(--smart-base-100);
+      }
 
-    li > q {
-      display: block;
-      padding: 0;
-      margin: 0;
-      color: var(--smart-primary-color);
-    }
+      li > q {
+          display: block;
+          padding: 0;
+          margin: 0;
+          color: var(--smart-primary-color);
+      }
 
-    main {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 5ch;
+      main {
+          display: flex;
+          justify-content: center;
+          margin-top: 2ch;
+          margin-bottom: 5ch;
 
-      section {
-        display: grid;
-        grid-template-columns: repeat(7, 12ch);
+          section {
+              display: grid;
+              grid-template-columns: repeat(7, 12ch);
 
-        div {
-          padding: 0.3ch;
+              div {
+                  padding: 0.3ch;
+                  text-align: center;
+              }
+
+              div.calendar-grid-header {
+                  background-color: var(--smart-border);
+              }
+
+              div.calendar-grid-cell {
+                  border-top-style: solid;
+                  border-top-color: var(--smart-border);
+                  border-top-width: 1px;
+
+                  div {
+                      padding: 0;
+                  }
+
+                  div.calendar-grid-cell-hijri-month {
+                      color: #00b300;
+                      font-size: small;
+                  }
+
+                  div.calendar-grid-cell-hijri-date {
+                      color: #00ff00;
+                  }
+
+                  div.calendar-grid-cell-fasting-undefined {
+                      color: #b3b300;
+                      font-size: small;
+
+                      img.calendar-grid-cell-fasting-undefined-spinner {
+                          width: 1.8ch;
+                          height: 1.8ch;
+                      }
+                  }
+
+                  div.calendar-grid-cell-fasting {
+                      color: #ffff00;
+                      font-size: small;
+                  }
+              }
+          }
+      }
+
+      header {
+          section#months {
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
+          }
+      }
+
+      #prev-month-button, #next-month-button {
+          width: 22ch;
+          align-items: center;
+          --smart-ui-state-border-active: var(--smart-base-200) !important;
+          --smart-ui-state-active: var(--smart-base-200) !important;
+
+          button {
+              vertical-align: top;
+          }
+      }
+
+      #current-month-label {
+          display: inline-block;
+          width: 22ch;
           text-align: center;
-        }
-
-        div.calendar-grid-header {
-          background-color: var(--smart-border);
-        }
-
-        div.calendar-grid-cell {
-          border-top-style: solid;
-          border-top-color: var(--smart-border);
-          border-top-width: 1px;
-
-          div {
-            padding: 0;
-          }
-
-          div.calendar-grid-cell-hijri-month {
-            color: #00b300;
-            font-size: small;
-          }
-
-          div.calendar-grid-cell-hijri-date {
-            color: #00ff00;
-          }
-
-          div.calendar-grid-cell-fasting-undefined {
-            color: #b3b300;
-            font-size: small;
-
-            img.calendar-grid-cell-fasting-undefined-spinner {
-              width: 1.8ch;
-              height: 1.8ch;
-            }
-          }
-          div.calendar-grid-cell-fasting {
-            color: #ffff00;
-            font-size: small;
-          }
-        }
+          vertical-align: center;
+          white-space: nowrap;
       }
-    }
 
-    header {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #prev-month-button, #next-month-button {
-      width: 22ch;
-      align-items: center;
-      --smart-ui-state-border-active: var(--smart-base-200) !important;
-      --smart-ui-state-active: var(--smart-base-200) !important;
-
-      button {
-        vertical-align: top;
+      footer {
+          font-size: small;
       }
-    }
 
-    #current-month-label {
-      display: inline-block;
-      width: 22ch;
-      text-align: center;
-      vertical-align: center;
-      white-space: nowrap;
-    }
+      footer > section#settings {
+          display: grid;
+          grid-template-columns: min-content fit-content(80vw) min-content;
+          justify-content: center;
+          align-items: center;
+          gap: 2em;
+      }
 
-    footer {
-      font-size: small;
-    }
+      footer > section > h4 {
+          margin-top: 3ch;
+          margin-bottom: 0;
+      }
 
-    footer > section > h4 {
-      margin-top: 3ch;
-      margin-bottom: 0;
-    }
+      smart-tooltip div.smart-tooltip-content {
+          background-color: var(--smart-secondary-lighter) !important;
+          border-color: var(--smart-secondary-lighter) !important;
+          padding: 0.5ch !important;
+      }
 
-    smart-tooltip div.smart-tooltip-content {
-      background-color: var(--smart-secondary-lighter) !important;
-      border-color: var(--smart-secondary-lighter) !important;
-      padding: 0.5ch !important;
-    }
+      smart-tooltip div.smart-tooltip-content::after {
+          --smart-tooltip-arrow-color: var(--smart-secondary-lighter);
+      }
 
-    smart-tooltip div.smart-tooltip-content::after {
-      --smart-tooltip-arrow-color: var(--smart-secondary-lighter);
-    }
+      smart-tooltip div.smart-tooltip-content > ul {
+          margin: 0;
+          padding-left: 0;
+          list-style-type: none;
+          list-style-position: inside;
+      }
 
-    smart-tooltip div.smart-tooltip-content > ul {
-      margin: 0;
-      padding-left: 0;
-      list-style-type: none;
-      list-style-position: inside;
-    }
+      smart-window#change-location-window {
+          border-color: var(--smart-base-100) !important;
+      }
+
+      div.smart-header-section {
+          background-color: var(--smart-base-100) !important;
+
+          div.smart-header {
+              font-size: larger;
+          }
+      }
+
+      div#change-location-windowContent {
+          overflow: hidden;
+      }
+
+      smart-button#change-location-save-button,
+      smart-button#change-location-default-button {
+          margin-right: 1em;
+          padding: 0.2em 1em;
+          --smart-window-header-button-size: max-content !important;
+          width: max-content !important;
+      }
+
+      smart-button#change-location-default-button {
+        background-color: var(--smart-base-200)
+      }
+
+      .leaflet-container {
+          height: 400px;
+          width: 600px;
+          max-width: 100%;
+          max-height: 100%;
+      }
+
+      .leaflet-layer,
+      .leaflet-control-zoom-in,
+      .leaflet-control-zoom-out,
+      .leaflet-control-attribution {
+          filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+          background: var(--smart-base-background-color-dark);
+      }
+
+
   </style>
 </head>
 <body theme="dark">
-<h1 style="text-align: center">Islamic Fasting Calendar</h1>
-<section class="fasting-reason">
-  <ul>
-    <li>
-      <q>Every deed of the son of Adam is for him except fasting; it is for Me, and I shall reward for it.</q>
-      <blockquote>Sahih al-Bukhari, Hadith 1904</blockquote>
-      <blockquote>Sahih Muslim, Hadith 1151</blockquote>
-    </li>
-  </ul>
-</section>
 <header>
-  <smart-button id="prev-month-button"></smart-button>
-  <span id="current-month-label">Current Month</span>
-  <smart-button id="next-month-button"></smart-button>
+  <h1 style="text-align: center">Islamic Fasting Calendar</h1>
+  <section class="fasting-reason">
+    <ul>
+      <li>
+        <q>Every deed of the son of Adam is for him except fasting; it is for Me, and I shall reward for it.</q>
+        <blockquote>Sahih al-Bukhari, Hadith 1904</blockquote>
+        <blockquote>Sahih Muslim, Hadith 1151</blockquote>
+      </li>
+    </ul>
+  </section>
+  <section id="months">
+    <smart-button id="prev-month-button"></smart-button>
+    <span id="current-month-label">Current Month</span>
+    <smart-button id="next-month-button"></smart-button>
+  </section>
 </header>
 <main>
   <section id="calendar-grid-cells"></section>
 </main>
 
 <footer>
+  <section id="settings">
+    <div>Location:</div>
+    <div id="location-value"></div>
+    <div>
+      <smart-button id="change-location-open-button">Change</smart-button>
+    </div>
+  </section>
+
   <section class="fasting-reason" id="fasting-reason-ramadan">
     <h4>Ramadan</h4>
     <ul>
       <li>
-        <q>Islam is built upon five: the testimony that none has the right to be worshipped but Allah and that Muhammad
-          is the Messenger of Allah, establishing prayer, giving zakah, performing Hajj, and fasting Ramadan.</q>
+        <q>Islam is built upon five: the testimony that none has the right to be worshipped but Allah and that
+          Muhammad
+          is the Messenger of Allah, establishing prayer, giving zakah, performing Hajj, and fasting
+          Ramadan.</q>
         <blockquote>Sahih al-Bukhari, Hadith 8</blockquote>
         <blockquote>Sahih Muslim, Hadith 16</blockquote>
       <li>
@@ -204,16 +275,19 @@
     <h4>Six Days of Shawwal</h4>
     <ul>
       <li>
-        <q>Whoever fasts Ramadan and then follows it with six days of Shawwal, it is as if he fasted for a lifetime.</q>
+        <q>Whoever fasts Ramadan and then follows it with six days of Shawwal, it is as if he fasted for a
+          lifetime.</q>
         <blockquote>Sahih Muslim, Hadith 1164</blockquote>
       </li>
       <li>
-        <q>Whoever fasts six days after Eid al-Fitr will have completed the year: whoever does a good deed will have ten
+        <q>Whoever fasts six days after Eid al-Fitr will have completed the year: whoever does a good deed will
+          have ten
           times the like thereof.</q>
         <blockquote>Sunan Ibn Majah, Hadith 1715</blockquote>
       </li>
       <li>
-        <q>Whoever fasts the month of Ramadan and then follows it with six days of fasting in the month of Shawwal, it
+        <q>Whoever fasts the month of Ramadan and then follows it with six days of fasting in the month of
+          Shawwal, it
           will be as if he has fasted for the entire year.</q>
         <blockquote>Sahih Muslim, Hadith 1164</blockquote>
       </li>
@@ -224,8 +298,10 @@
     <ul>
       <li>
         Abu Qatada reported the Messenger (ﷺ) said:
-        <q> I seek from Allah that fasting on the day of 'Arafa may atone for the sins of the preceding and the coming
-          years, and I seek from Allah that fasting on the day of Ashura may atone for the sins of the preceding
+        <q> I seek from Allah that fasting on the day of 'Arafa may atone for the sins of the preceding and the
+          coming
+          years, and I seek from Allah that fasting on the day of Ashura may atone for the sins of the
+          preceding
           year.</q>
         <blockquote cite="https://sunnah.com/muslim:1162a">Sahih Muslim, Hadith 1162</blockquote>
       </li>
@@ -249,7 +325,8 @@
       </li>
       <li>
         Abu Hurairah (RA) said:
-        <q>My close friend (the Prophet ﷺ) advised me to do three things: to fast three days of every month, pray two
+        <q>My close friend (the Prophet ﷺ) advised me to do three things: to fast three days of every month,
+          pray two
           rak‘ahs of Duha, and pray Witr before sleeping.</q>
         <blockquote>Sahih al-Bukhari, Hadith 722</blockquote>
         <blockquote>Sunan Abi Dawud, Hadith 1433</blockquote>
@@ -261,7 +338,8 @@
     <ul>
       <li>
         This specific statement is narrated by Abu Hurairah:
-        <q>Deeds are presented on Mondays and Thursdays, and I love that my deeds be presented while I am fasting.</q>
+        <q>Deeds are presented on Mondays and Thursdays, and I love that my deeds be presented while I am
+          fasting.</q>
         <blockquote>Jami` at-Tirmidhi, Hadith 747</blockquote>
         <blockquote>Sunan an-Nasa'i, Hadith 2358</blockquote>
         <blockquote>Riyad as-Salihin, Book 9, Hadith 1256</blockquote>
@@ -280,16 +358,23 @@
   </section>
 </footer>
 
+<smart-window
+    id='change-location-window'
+    header-buttons='["close"]'
+    modal
+    label='Change Location'
+></smart-window>
+
 <script>
-  const geolocationPositionRepository = {
+  const geoPositionRepository = {
     getAsString() {
-      return localStorage.getItem('geolocationPosition');
+      return localStorage.getItem('geoPosition');
     },
     get() {
       return JSON.parse(this.getAsString());
     },
     setAsString(str) {
-      localStorage.setItem('geolocationPosition', str);
+      localStorage.setItem('geoPosition', str);
     },
   };
 
@@ -422,7 +507,7 @@
       gridEl.children.item(i).remove();
     }
 
-    const geolocationPosition = geolocationPositionRepository.get()
+    const geoPosition = geoPositionRepository.get()
 
     while (date.getFullYear() * 1000 + date.getMonth() <= month.getFullYear() * 1000 + month.getMonth()) {
       for (let i = 0; i < 7; i++) {
@@ -474,9 +559,9 @@
           }
 
           const fastingEl = d.createElement('div');
-          if (geolocationPosition) {
+          if (geoPosition) {
             fastingEl.classList.add('calendar-grid-cell-fasting')
-            const times = SunCalc.getTimes(date, geolocationPosition.latitude, geolocationPosition.longitude);
+            const times = SunCalc.getTimes(date, geoPosition.latitude, geoPosition.longitude);
             fastingEl.textContent = timeFormat.format(times.sunrise) + ' - ' + timeFormat.format(times.sunset);
           } else {
             fastingEl.classList.add('calendar-grid-cell-fasting-undefined')
@@ -515,30 +600,123 @@
   }
 
   updateCalendarHeader();
-  update();
+  updateMonthLabels();
 
-  navigator.geolocation.getCurrentPosition(
-    (position) => {
-      const prevPositionStr = geolocationPositionRepository.getAsString();
-      const currentPositionStr = JSON.stringify({
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
+  function updateLocationDescription() {
+    const el = d.getElementById('location-value');
+    const position = geoPositionRepository.get();
+    if (position) {
+      const numberFormat = new Intl.NumberFormat(locale, {
+        minimumFractionDigits: 5,
+        maximumFractionDigits: 5,
       });
-
-      if(currentPositionStr !== prevPositionStr) {
-        geolocationPositionRepository.setAsString(currentPositionStr);
-        updateCalendarDates();
+      el.textContent = numberFormat.format(position.latitude) + ' ' + numberFormat.format(position.longitude);
+      {
+        const url = new URL("https://nominatim.openstreetmap.org/reverse");
+        url.searchParams.set("format", "jsonv2");
+        url.searchParams.set("lat", position.latitude);
+        url.searchParams.set("lon", position.longitude);
+        url.searchParams.set("accept-language", locale);
+        fetch(url).then(response => {
+          if (response.ok) {
+            response.json().then(data => {
+              el.textContent += '; ' + data.display_name;
+            });
+          }
+        });
       }
-    },
-    (error) => {
-      console.error('Error getting location:', error);
-    },
-    {
-      enableHighAccuracy: true,
-      maximumAge: 0
+    } else {
+      const spinner = d.createElement('img');
+      spinner.style.height = '2em';
+      spinner.src = 'spinner.svg';
+      el.append(spinner);
     }
-  );
+  }
 
+  function setLocation(latitude, longitude) {
+    const currentPositionStr = JSON.stringify({
+      latitude: latitude,
+      longitude: longitude,
+    });
+    const prevPositionStr = geoPositionRepository.getAsString();
+    if (currentPositionStr !== prevPositionStr) {
+      geoPositionRepository.setAsString(currentPositionStr);
+      updateCalendarDates();
+      updateLocationDescription();
+    }
+  }
+
+  updateCalendarDates();
+  updateLocationDescription();
+
+  function updateLocationByDevice() {
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        setLocation(position.coords.latitude, position.coords.longitude);
+      },
+      error => {
+        console.error('Error getting location:', error);
+      },
+      {
+        enableHighAccuracy: true,
+        maximumAge: 0
+      }
+    );
+  }
+
+  updateLocationByDevice();
+
+  let changeLocationWindowEl = null;
+  let changeLocationMarker = null;
+  let changeLocationMapView = null;
+
+  d.getElementById('change-location-open-button').addEventListener('click', _ => {
+    let geoPosition = geoPositionRepository.get();
+    if (!geoPosition) {
+      // default Kaaba
+      geoPosition = {
+        latitude: 21.4225,
+        longitude: 39.8262,
+      };
+    }
+    if (changeLocationWindowEl == null) {
+      changeLocationWindowEl = d.getElementById('change-location-window');
+      changeLocationMapView = L.map('change-location-windowContent').setView([geoPosition.latitude, geoPosition.longitude], 8);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(changeLocationMapView);
+      changeLocationMarker = L.marker([geoPosition.latitude, geoPosition.longitude], {
+        draggable: true
+      }).addTo(changeLocationMapView);
+      const smartButtonsEl = changeLocationWindowEl.querySelector('.smart-buttons-container');
+      {
+        const saveButtonEl = document.createElement('smart-button');
+        saveButtonEl.id = 'change-location-save-button';
+        saveButtonEl.textContent = 'Ok';
+        saveButtonEl.addEventListener('click', _ => {
+          const markerPosition = changeLocationMarker.getLatLng();
+          setLocation(markerPosition.lat, markerPosition.lng);
+          changeLocationWindowEl.close();
+        });
+        smartButtonsEl.prepend(saveButtonEl);
+      }
+      {
+        const defaultButtonEl = document.createElement('smart-button');
+        defaultButtonEl.id = 'change-location-default-button';
+        defaultButtonEl.textContent = 'Default';
+        defaultButtonEl.addEventListener('click', _ => {
+          updateLocationByDevice();
+          changeLocationWindowEl.close();
+        });
+        smartButtonsEl.prepend(defaultButtonEl);
+      }
+    } else {
+      changeLocationMarker.setLatLng([geoPosition.latitude, geoPosition.longitude]);
+      changeLocationMapView.panTo([geoPosition.latitude, geoPosition.longitude]);
+    }
+    changeLocationWindowEl.open();
+  });
 </script>
 </body>
 </html>
