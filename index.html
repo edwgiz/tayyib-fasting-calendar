@@ -15,6 +15,7 @@
     import 'https://unpkg.com/smart-webcomponents@26.0.0/source/modules/smart.button.js';
     import 'https://unpkg.com/smart-webcomponents@26.0.0/source/modules/smart.tooltip.js';
     import 'https://unpkg.com/smart-webcomponents@26.0.0/source/modules/smart.window.js';
+    import 'https://unpkg.com/smart-webcomponents@26.0.0/source/modules/smart.dropdownlist.js';
   </script>
   <script src="https://unpkg.com/suncalc@1.9.0/suncalc.js"></script>
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -22,210 +23,215 @@
   <title>Tayyib Fasting Calendar</title>
 
   <style>
-      body {
-          font-family: sans-serif;
-          background-color: var(--smart-base-background-color-dark);
-          color: var(--smart-primary-color);
-          font-size: larger;
-      }
+    body {
+      font-family: sans-serif;
+      background-color: var(--smart-base-background-color-dark);
+      color: var(--smart-primary-color);
+      font-size: larger;
+    }
 
-      section.fasting-reason {
-          margin: 1ch 1ch 3ch;
-      }
+    section.fasting-reason {
+      margin: 1ch 1ch 3ch;
+    }
 
-      section.fasting-reason > ul > li {
-          margin-top: 0.75ch;
-      }
+    section.fasting-reason > ul > li {
+      margin-top: 0.75ch;
+    }
 
-      blockquote {
-          display: block;
-          padding: 0;
-          margin: 0;
-          font-style: italic;
-      }
+    blockquote {
+      display: block;
+      padding: 0;
+      margin: 0;
+      font-style: italic;
+    }
 
-      blockquote::before {
-          content: "- ";
-      }
+    blockquote::before {
+      content: "- ";
+    }
 
-      li:has(>q) {
-          color: var(--smart-base-100);
-      }
+    li:has(>q) {
+      color: var(--smart-base-100);
+    }
 
-      li > q {
-          display: block;
-          padding: 0;
-          margin: 0;
-          color: var(--smart-primary-color);
-      }
+    li > q {
+      display: block;
+      padding: 0;
+      margin: 0;
+      color: var(--smart-primary-color);
+    }
 
-      main {
-          display: flex;
-          justify-content: center;
-          margin-top: 2ch;
-          margin-bottom: 5ch;
+    main {
+      display: flex;
+      justify-content: center;
+      margin-top: 2ch;
+      margin-bottom: 5ch;
 
-          section {
-              display: grid;
-              grid-template-columns: repeat(7, 12ch);
+      section {
+        display: grid;
+        grid-template-columns: repeat(7, 12ch);
 
-              div {
-                  padding: 0.3ch;
-                  text-align: center;
-              }
-
-              div.calendar-grid-header {
-                  background-color: var(--smart-border);
-              }
-
-              div.calendar-grid-cell {
-                  border-top-style: solid;
-                  border-top-color: var(--smart-border);
-                  border-top-width: 1px;
-
-                  div {
-                      padding: 0;
-                  }
-
-                  div.calendar-grid-cell-hijri-month {
-                      color: #00b300;
-                      font-size: small;
-                  }
-
-                  div.calendar-grid-cell-hijri-date {
-                      color: #00ff00;
-                  }
-
-                  div.calendar-grid-cell-fasting-undefined {
-                      color: #b3b300;
-                      font-size: small;
-
-                      img.calendar-grid-cell-fasting-undefined-spinner {
-                          width: 1.8ch;
-                          height: 1.8ch;
-                      }
-                  }
-
-                  div.calendar-grid-cell-fasting {
-                      color: #ffff00;
-                      font-size: small;
-                  }
-              }
-
-              div.calendar-grid-cell-today {
-                background-image: url("./moon-hand-drawn-circle-svgrepo-com.svg");
-                background-size: 80% 100%;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-origin: content-box;
-              }
-          }
-      }
-
-      header {
-          section#months {
-              display: flex;
-              flex-direction: row;
-              justify-content: center;
-              align-items: center;
-          }
-      }
-
-      #prev-month-button, #next-month-button {
-          width: 22ch;
-          align-items: center;
-          --smart-ui-state-border-active: var(--smart-base-200) !important;
-          --smart-ui-state-active: var(--smart-base-200) !important;
-
-          button {
-              vertical-align: top;
-          }
-      }
-
-      #current-month-label {
-          display: inline-block;
-          width: 22ch;
+        div {
+          padding: 0.3ch;
           text-align: center;
-          vertical-align: center;
-          white-space: nowrap;
-      }
+        }
 
-      footer {
-          font-size: small;
-      }
+        div.calendar-grid-header {
+          background-color: var(--smart-border);
+        }
 
-      footer > section#settings {
-          display: grid;
-          grid-template-columns: min-content fit-content(80vw) min-content;
-          justify-content: center;
-          align-items: center;
-          gap: 2em;
-      }
+        div.calendar-grid-cell {
+          border-top-style: solid;
+          border-top-color: var(--smart-border);
+          border-top-width: 1px;
 
-      footer > section > h4 {
-          margin-top: 3ch;
-          margin-bottom: 0;
-      }
-
-      smart-tooltip div.smart-tooltip-content {
-          background-color: var(--smart-secondary-lighter) !important;
-          border-color: var(--smart-secondary-lighter) !important;
-          padding: 0.5ch !important;
-      }
-
-      smart-tooltip div.smart-tooltip-content::after {
-          --smart-tooltip-arrow-color: var(--smart-secondary-lighter);
-      }
-
-      smart-tooltip div.smart-tooltip-content > ul {
-          margin: 0;
-          padding-left: 0;
-          list-style-type: none;
-          list-style-position: inside;
-      }
-
-      smart-window#change-location-window {
-          border-color: var(--smart-base-100) !important;
-      }
-
-      div.smart-header-section {
-          background-color: var(--smart-base-100) !important;
-
-          div.smart-header {
-              font-size: larger;
+          div {
+            padding: 0;
           }
-      }
 
-      div#change-location-windowContent {
-          overflow: hidden;
-      }
+          div.calendar-grid-cell-hijri-month {
+            color: #00b300;
+            font-size: small;
+          }
 
-      smart-button#change-location-save-button,
-      smart-button#change-location-default-button {
-          margin-right: 1em;
-          padding: 0.2em 1em;
-          --smart-window-header-button-size: max-content !important;
-          width: max-content !important;
-      }
+          div.calendar-grid-cell-hijri-date {
+            color: #00ff00;
+          }
 
-      smart-button#change-location-default-button {
-          background-color: var(--smart-base-200)
-      }
+          div.calendar-grid-cell-fasting-undefined {
+            color: #b3b300;
+            font-size: small;
 
-      .leaflet-container {
-          height: 400px;
-          width: 600px;
-          max-width: 100%;
-          max-height: 100%;
-      }
+            img.calendar-grid-cell-fasting-undefined-spinner {
+              width: 1.8ch;
+              height: 1.8ch;
+            }
+          }
 
-      .leaflet-layer,
-      .leaflet-control-zoom-in,
-      .leaflet-control-zoom-out,
-      .leaflet-control-attribution {
-          filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
-          background: var(--smart-base-background-color-dark);
+          div.calendar-grid-cell-fasting {
+            color: #ffff00;
+            font-size: small;
+          }
+        }
+
+        div.calendar-grid-cell-today {
+          background-image: url("./moon-hand-drawn-circle-svgrepo-com.svg");
+          background-size: 80% 100%;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-origin: content-box;
+        }
       }
+    }
+
+    header {
+      section#months {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    #prev-month-button, #next-month-button {
+      width: 22ch;
+      align-items: center;
+      --smart-ui-state-border-active: var(--smart-base-200) !important;
+      --smart-ui-state-active: var(--smart-base-200) !important;
+
+      button {
+        vertical-align: top;
+      }
+    }
+
+    #current-month-label {
+      display: inline-block;
+      width: 22ch;
+      text-align: center;
+      vertical-align: center;
+      white-space: nowrap;
+    }
+
+    footer {
+      font-size: small;
+    }
+
+    footer > section#settings {
+      display: grid;
+      grid-template-columns: min-content fit-content(80vw);
+      justify-content: center;
+      align-items: center;
+      gap: 2em;
+      font-size: var(--smart-font-size);
+    }
+
+    .settings-label {
+      white-space: nowrap;
+    }
+
+    footer > section > h4 {
+      margin-top: 3ch;
+      margin-bottom: 0;
+    }
+
+    smart-tooltip div.smart-tooltip-content {
+      background-color: var(--smart-secondary-lighter) !important;
+      border-color: var(--smart-secondary-lighter) !important;
+      padding: 0.5ch !important;
+    }
+
+    smart-tooltip div.smart-tooltip-content::after {
+      --smart-tooltip-arrow-color: var(--smart-secondary-lighter);
+    }
+
+    smart-tooltip div.smart-tooltip-content > ul {
+      margin: 0;
+      padding-left: 0;
+      list-style-type: none;
+      list-style-position: inside;
+    }
+
+    smart-window#change-location-window {
+      border-color: var(--smart-base-100) !important;
+    }
+
+    div.smart-header-section {
+      background-color: var(--smart-base-100) !important;
+
+      div.smart-header {
+        font-size: larger;
+      }
+    }
+
+    div#change-location-windowContent {
+      overflow: hidden;
+    }
+
+    smart-button#change-location-save-button,
+    smart-button#change-location-default-button {
+      margin-right: 1em;
+      padding: 0.2em 1em;
+      --smart-window-header-button-size: max-content !important;
+      width: max-content !important;
+    }
+
+    smart-button#change-location-default-button {
+      background-color: var(--smart-base-200)
+    }
+
+    .leaflet-container {
+      height: 400px;
+      width: 600px;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .leaflet-layer,
+    .leaflet-control-zoom-in,
+    .leaflet-control-zoom-out,
+    .leaflet-control-attribution {
+      filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+      background: var(--smart-base-background-color-dark);
+    }
 
 
   </style>
@@ -254,10 +260,17 @@
 
 <footer>
   <section id="settings">
-    <div>Location:</div>
-    <div id="location-value"></div>
-    <div>
+    <div class="settings-label">Location:</div>
+    <div><span id="location-value"></span>
       <smart-button id="change-location-open-button">Change</smart-button>
+    </div>
+    <div class="settings-label">Time zone:</div>
+    <div>
+      <smart-drop-down-list
+        id='change-tz-dropdown'
+        filterable
+        selection-mode="one">
+      </smart-drop-down-list>
     </div>
   </section>
 
@@ -314,6 +327,18 @@
       </li>
     </ul>
   </section>
+  <section class="fasting-reason" id="fasting-reason-first-9-dhul-hijjah">
+    <h4>First nine days of Dhul-Hijjah</h4>
+    <ul>
+      <li>
+        One of the wives of the Prophet ﷺ said:
+        <q>The Messenger of Allah ﷺ used to fast the first nine days of Dhul-Hijjah, the day of Ashura, and three days
+          of every month…</q>
+        <blockquote cite="https://sunnah.com/muslim:1162a">Abi Dawud, Hadith 2437</blockquote>
+        <blockquote cite="https://sunnah.com/muslim:1162a">an-Nasa'i, Hadith 2417</blockquote>
+      </li>
+    </ul>
+  </section>
   <section class="fasting-reason" id="fasting-reason-white-days">
     <h4>White Days</h4>
     <ul>
@@ -366,10 +391,10 @@
 </footer>
 
 <smart-window
-    id='change-location-window'
-    header-buttons='["close"]'
-    modal
-    label='Change Location'
+  id='change-location-window'
+  header-buttons='["close"]'
+  modal
+  label='Change Location'
 ></smart-window>
 
 <script>
@@ -384,35 +409,89 @@
       localStorage.setItem('geoPosition', str);
     },
   };
+  const timezoneRepository = {
+    getOrDefault(defaultValue) {
+      const value = localStorage.getItem('timezone');
+      return value ? value : defaultValue;
+    },
+    set(str) {
+      localStorage.setItem('timezone', str);
+    },
+  };
 
-  const localDateTimeFormat = new Intl.DateTimeFormat(undefined, {
-    month: 'long',
-    year: 'numeric'
-  });
-  const locale = localDateTimeFormat.resolvedOptions().locale;
 
   const now = new Date();
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  let month = new Date(now.getFullYear(), now.getMonth(), 1);
+  let month = new Date(now.getFullYear(), now.getMonth(), 2);
+
+  const defaultDatetimeOptions = Intl.DateTimeFormat().resolvedOptions();
+  let locale = defaultDatetimeOptions.locale;
+
+  const getTimezoneUsecase = {
+    apply() {
+      return timezoneRepository.getOrDefault(defaultDatetimeOptions.timeZone);
+    }
+  }
+
+  let datetimeFormats = null;
+  function updateDatetimeFormats()
+  {
+    const tzValue = getTimezoneUsecase.apply();
+    datetimeFormats = {
+      month: new Intl.DateTimeFormat(locale, {
+        timeZone: tzValue,
+        month: 'long',
+        year: 'numeric'
+      }),
+      dateId: new Intl.DateTimeFormat(locale, {
+        timeZone: tzValue,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      }),
+      date: new Intl.DateTimeFormat(locale, {
+        timeZone: tzValue,
+        day: '2-digit',
+      }),
+      hijriDate: new Intl.DateTimeFormat('en-u-ca-islamic-nu-latn', {
+        timeZone: tzValue,
+        day: '2-digit',
+        month: "long",
+      }),
+      hijriMonthNumber: new Intl.DateTimeFormat('en-u-ca-islamic-nu-latn', {
+        timeZone: tzValue,
+        month: "2-digit",
+      }),
+      time: new Intl.DateTimeFormat(locale, {
+        timeZone: tzValue,
+        hour: '2-digit',
+        hour12: false,
+        minute: '2-digit',
+      }),
+    }
+  }
+  updateDatetimeFormats();
+
+
   const d = document;
   const prevMonthEl = d.getElementById('prev-month-button');
   const currentMonthEl = d.getElementById('current-month-label');
   const nextMonthEl = d.getElementById('next-month-button');
 
   function updateMonthLabels() {
-    const prevMonth = new Date(month.getFullYear(), month.getMonth() - 1, 1);
-    const nextMonth = new Date(month.getFullYear(), month.getMonth() + 1, 1);
-    prevMonthEl.innerHTML = localDateTimeFormat.format(prevMonth) + '&nbsp; ◂◂';
-    currentMonthEl.textContent = localDateTimeFormat.format(month);
-    nextMonthEl.innerHTML = '▸▸ &nbsp;' + localDateTimeFormat.format(nextMonth);
+    const prevMonth = new Date(month.getFullYear(), month.getMonth() - 1, 2);
+    const nextMonth = new Date(month.getFullYear(), month.getMonth() + 1, 2);
+    prevMonthEl.innerHTML = datetimeFormats.month.format(prevMonth) + '&nbsp; ◂◂';
+    currentMonthEl.textContent = datetimeFormats.month.format(month);
+    nextMonthEl.innerHTML = '▸▸ &nbsp;' + datetimeFormats.month.format(nextMonth);
   }
 
   prevMonthEl.addEventListener('click', _ => {
-    month = new Date(month.getFullYear(), month.getMonth() - 1, 1);
+    month = new Date(month.getFullYear(), month.getMonth() - 1, 2);
     update();
   });
   nextMonthEl.addEventListener('click', _ => {
-    month = new Date(month.getFullYear(), month.getMonth() + 1, 1);
+    month = new Date(month.getFullYear(), month.getMonth() + 1, 2);
     update();
   });
 
@@ -434,6 +513,7 @@
   function updateCalendarHeader() {
     gridEl.innerHTML = '';
     const weekdayFormat = new Intl.DateTimeFormat(locale, {
+      timeZone: getTimezoneUsecase.apply(),
       weekday: 'short'
     });
 
@@ -447,26 +527,6 @@
     }
   }
 
-  const idDateFormat = new Intl.DateTimeFormat(locale, {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  });
-  const gregorianDateFormat = new Intl.DateTimeFormat(locale, {
-    day: '2-digit',
-  });
-  const hijriDateFormat = new Intl.DateTimeFormat('en-u-ca-islamic-nu-latn', {
-    day: '2-digit',
-    month: "long",
-  });
-  const hijriMonthNumberFormat = new Intl.DateTimeFormat('en-u-ca-islamic-nu-latn', {
-    month: "2-digit",
-  });
-  const timeFormat = new Intl.DateTimeFormat(locale, {
-    hour: '2-digit',
-    hour12: false,
-    minute: '2-digit',
-  });
 
   function getFastingReasonTitle(elId) {
     const fastingReasonEl = d.getElementById(elId);
@@ -519,18 +579,18 @@
 
     while (date.getFullYear() * 1000 + date.getMonth() <= month.getFullYear() * 1000 + month.getMonth()) {
       for (let i = 0; i < 7; i++) {
-        const id = 'calendar-grid-cell-' + idDateFormat.format(date);
+        const id = 'calendar-grid-cell-' + datetimeFormats.dateId.format(date);
         const cellEl = d.createElement('div');
         cellEl.id = id;
         cellEl.classList.add('calendar-grid-cell');
         if (!(date < today || today < date)) {
           cellEl.classList.add('calendar-grid-cell-today')
         }
-        cellEl.appendChild(d.createTextNode(gregorianDateFormat.format(date)));
+        cellEl.appendChild(d.createTextNode(datetimeFormats.date.format(date)));
         const fastingReasons = [];
-        const hijriMonthNumber = hijriMonthNumberFormat.format(date);
+        const hijriMonthNumber = datetimeFormats.hijriMonthNumber.format(date);
         {
-          const hijriStr = hijriDateFormat.format(date);
+          const hijriStr = datetimeFormats.hijriDate.format(date);
           const hijriStrLength = hijriStr.length;
           const hijriDate = hijriStr.substring(hijriStrLength - 2, hijriStrLength);
           if (hijriMonthNumber === '09') {
@@ -540,6 +600,9 @@
             || (hijriMonthNumber === '01' && hijriDate === '10')// Day of Ashura
           ) {
             fastingReasons.push('fasting-reason-arafah-or-ashura');
+          }
+          if (hijriMonthNumber === '12' && hijriDate < '10') {// First nine days of Dhul-Hijjah
+            fastingReasons.push('fasting-reason-first-9-dhul-hijjah');
           }
           {
             const hijriMonthEl = d.createElement('div');
@@ -573,6 +636,7 @@
           if (geoPosition) {
             fastingEl.classList.add('calendar-grid-cell-fasting')
             const times = SunCalc.getTimes(date, geoPosition.latitude, geoPosition.longitude);
+            const timeFormat = datetimeFormats.time;
             fastingEl.textContent = timeFormat.format(times.sunrise) + ' - ' + timeFormat.format(times.sunset);
           } else {
             fastingEl.classList.add('calendar-grid-cell-fasting-undefined')
@@ -631,7 +695,7 @@
         fetch(url).then(response => {
           if (response.ok) {
             response.json().then(data => {
-              el.textContent += '; ' + data.display_name;
+              el.textContent += '; ' + data.display_name + '.';
             });
           }
         });
@@ -727,6 +791,19 @@
       changeLocationMapView.panTo([geoPosition.latitude, geoPosition.longitude]);
     }
     changeLocationWindowEl.open();
+  });
+
+  const changeTzDropdown = d.getElementById('change-tz-dropdown');
+  changeTzDropdown.filterable = true;
+  changeTzDropdown.filterMode = 'contains';
+  changeTzDropdown.dataSource = Intl.supportedValuesOf('timeZone').map(v => ({'l': v, 'v': v}));
+  changeTzDropdown.displayMember = 'l';
+  changeTzDropdown.valueMember = 'v';
+  changeTzDropdown.selectedValues = [getTimezoneUsecase.apply()];
+  changeTzDropdown.addEventListener('change', (event) => {
+    timezoneRepository.set(event.detail.value);
+    updateDatetimeFormats();
+    update();
   });
 </script>
 </body>
