@@ -23,215 +23,215 @@
   <title>Tayyib Fasting Calendar</title>
 
   <style>
-    body {
-      font-family: sans-serif;
-      background-color: var(--smart-base-background-color-dark);
-      color: var(--smart-primary-color);
-      font-size: larger;
-    }
+      body {
+          font-family: sans-serif;
+          background-color: var(--smart-base-background-color-dark);
+          color: var(--smart-primary-color);
+          font-size: larger;
+      }
 
-    section.fasting-reason {
-      margin: 1ch 1ch 3ch;
-    }
+      section.fasting-reason {
+          margin: 1ch 1ch 3ch;
+      }
 
-    section.fasting-reason > ul > li {
-      margin-top: 0.75ch;
-    }
+      section.fasting-reason > ul > li {
+          margin-top: 0.75ch;
+      }
 
-    blockquote {
-      display: block;
-      padding: 0;
-      margin: 0;
-      font-style: italic;
-    }
+      blockquote {
+          display: block;
+          padding: 0;
+          margin: 0;
+          font-style: italic;
+      }
 
-    blockquote::before {
-      content: "- ";
-    }
+      blockquote::before {
+          content: "- ";
+      }
 
-    li:has(>q) {
-      color: var(--smart-base-100);
-    }
+      li:has(>q) {
+          color: var(--smart-base-100);
+      }
 
-    li > q {
-      display: block;
-      padding: 0;
-      margin: 0;
-      color: var(--smart-primary-color);
-    }
+      li > q {
+          display: block;
+          padding: 0;
+          margin: 0;
+          color: var(--smart-primary-color);
+      }
 
-    main {
-      display: flex;
-      justify-content: center;
-      margin-top: 2ch;
-      margin-bottom: 5ch;
+      main {
+          display: flex;
+          justify-content: center;
+          margin-top: 2ch;
+          margin-bottom: 5ch;
 
-      section {
-        display: grid;
-        grid-template-columns: repeat(7, 12ch);
+          section {
+              display: grid;
+              grid-template-columns: repeat(7, 12ch);
 
-        div {
-          padding: 0.3ch;
+              div {
+                  padding: 0.3ch;
+                  text-align: center;
+              }
+
+              div.calendar-grid-header {
+                  background-color: var(--smart-border);
+              }
+
+              div.calendar-grid-cell {
+                  border-top-style: solid;
+                  border-top-color: var(--smart-border);
+                  border-top-width: 1px;
+
+                  div {
+                      padding: 0;
+                  }
+
+                  div.calendar-grid-cell-hijri-month {
+                      color: #00b300;
+                      font-size: small;
+                  }
+
+                  div.calendar-grid-cell-hijri-date {
+                      color: #00ff00;
+                  }
+
+                  div.calendar-grid-cell-fasting-undefined {
+                      color: #b3b300;
+                      font-size: small;
+
+                      img.calendar-grid-cell-fasting-undefined-spinner {
+                          width: 1.8ch;
+                          height: 1.8ch;
+                      }
+                  }
+
+                  div.calendar-grid-cell-fasting {
+                      color: #ffff00;
+                      font-size: small;
+                  }
+              }
+
+              div.calendar-grid-cell-today {
+                  background-image: url("./moon-hand-drawn-circle-svgrepo-com.svg");
+                  background-size: 80% 100%;
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  background-origin: content-box;
+              }
+          }
+      }
+
+      header {
+          section#months {
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
+          }
+      }
+
+      #prev-month-button, #next-month-button {
+          width: 22ch;
+          align-items: center;
+          --smart-ui-state-border-active: var(--smart-base-200) !important;
+          --smart-ui-state-active: var(--smart-base-200) !important;
+
+          button {
+              vertical-align: top;
+          }
+      }
+
+      #current-month-label {
+          display: inline-block;
+          width: 22ch;
           text-align: center;
-        }
-
-        div.calendar-grid-header {
-          background-color: var(--smart-border);
-        }
-
-        div.calendar-grid-cell {
-          border-top-style: solid;
-          border-top-color: var(--smart-border);
-          border-top-width: 1px;
-
-          div {
-            padding: 0;
-          }
-
-          div.calendar-grid-cell-hijri-month {
-            color: #00b300;
-            font-size: small;
-          }
-
-          div.calendar-grid-cell-hijri-date {
-            color: #00ff00;
-          }
-
-          div.calendar-grid-cell-fasting-undefined {
-            color: #b3b300;
-            font-size: small;
-
-            img.calendar-grid-cell-fasting-undefined-spinner {
-              width: 1.8ch;
-              height: 1.8ch;
-            }
-          }
-
-          div.calendar-grid-cell-fasting {
-            color: #ffff00;
-            font-size: small;
-          }
-        }
-
-        div.calendar-grid-cell-today {
-          background-image: url("./moon-hand-drawn-circle-svgrepo-com.svg");
-          background-size: 80% 100%;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-origin: content-box;
-        }
+          vertical-align: center;
+          white-space: nowrap;
       }
-    }
 
-    header {
-      section#months {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
+      footer {
+          font-size: small;
       }
-    }
 
-    #prev-month-button, #next-month-button {
-      width: 22ch;
-      align-items: center;
-      --smart-ui-state-border-active: var(--smart-base-200) !important;
-      --smart-ui-state-active: var(--smart-base-200) !important;
-
-      button {
-        vertical-align: top;
+      footer > section#settings {
+          display: grid;
+          grid-template-columns: min-content fit-content(80vw);
+          justify-content: center;
+          align-items: center;
+          gap: 2em;
+          font-size: var(--smart-font-size);
       }
-    }
 
-    #current-month-label {
-      display: inline-block;
-      width: 22ch;
-      text-align: center;
-      vertical-align: center;
-      white-space: nowrap;
-    }
-
-    footer {
-      font-size: small;
-    }
-
-    footer > section#settings {
-      display: grid;
-      grid-template-columns: min-content fit-content(80vw);
-      justify-content: center;
-      align-items: center;
-      gap: 2em;
-      font-size: var(--smart-font-size);
-    }
-
-    .settings-label {
-      white-space: nowrap;
-    }
-
-    footer > section > h4 {
-      margin-top: 3ch;
-      margin-bottom: 0;
-    }
-
-    smart-tooltip div.smart-tooltip-content {
-      background-color: var(--smart-secondary-lighter) !important;
-      border-color: var(--smart-secondary-lighter) !important;
-      padding: 0.5ch !important;
-    }
-
-    smart-tooltip div.smart-tooltip-content::after {
-      --smart-tooltip-arrow-color: var(--smart-secondary-lighter);
-    }
-
-    smart-tooltip div.smart-tooltip-content > ul {
-      margin: 0;
-      padding-left: 0;
-      list-style-type: none;
-      list-style-position: inside;
-    }
-
-    smart-window#change-location-window {
-      border-color: var(--smart-base-100) !important;
-    }
-
-    div.smart-header-section {
-      background-color: var(--smart-base-100) !important;
-
-      div.smart-header {
-        font-size: larger;
+      .settings-label {
+          white-space: nowrap;
       }
-    }
 
-    div#change-location-windowContent {
-      overflow: hidden;
-    }
+      footer > section > h4 {
+          margin-top: 3ch;
+          margin-bottom: 0;
+      }
 
-    smart-button#change-location-save-button,
-    smart-button#change-location-default-button {
-      margin-right: 1em;
-      padding: 0.2em 1em;
-      --smart-window-header-button-size: max-content !important;
-      width: max-content !important;
-    }
+      smart-tooltip div.smart-tooltip-content {
+          background-color: var(--smart-secondary-lighter) !important;
+          border-color: var(--smart-secondary-lighter) !important;
+          padding: 0.5ch !important;
+      }
 
-    smart-button#change-location-default-button {
-      background-color: var(--smart-base-200)
-    }
+      smart-tooltip div.smart-tooltip-content::after {
+          --smart-tooltip-arrow-color: var(--smart-secondary-lighter);
+      }
 
-    .leaflet-container {
-      height: 400px;
-      width: 600px;
-      max-width: 100%;
-      max-height: 100%;
-    }
+      smart-tooltip div.smart-tooltip-content > ul {
+          margin: 0;
+          padding-left: 0;
+          list-style-type: none;
+          list-style-position: inside;
+      }
 
-    .leaflet-layer,
-    .leaflet-control-zoom-in,
-    .leaflet-control-zoom-out,
-    .leaflet-control-attribution {
-      filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
-      background: var(--smart-base-background-color-dark);
-    }
+      smart-window#change-location-window {
+          border-color: var(--smart-base-100) !important;
+      }
+
+      div.smart-header-section {
+          background-color: var(--smart-base-100) !important;
+
+          div.smart-header {
+              font-size: larger;
+          }
+      }
+
+      div#change-location-windowContent {
+          overflow: hidden;
+      }
+
+      smart-button#change-location-save-button,
+      smart-button#change-location-default-button {
+          margin-right: 1em;
+          padding: 0.2em 1em;
+          --smart-window-header-button-size: max-content !important;
+          width: max-content !important;
+      }
+
+      smart-button#change-location-default-button {
+          background-color: var(--smart-base-200)
+      }
+
+      .leaflet-container {
+          height: 400px;
+          width: 600px;
+          max-width: 100%;
+          max-height: 100%;
+      }
+
+      .leaflet-layer,
+      .leaflet-control-zoom-in,
+      .leaflet-control-zoom-out,
+      .leaflet-control-attribution {
+          filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+          background: var(--smart-base-background-color-dark);
+      }
 
 
   </style>
@@ -267,9 +267,9 @@
     <div class="settings-label">Time zone:</div>
     <div>
       <smart-drop-down-list
-        id='change-tz-dropdown'
-        filterable
-        selection-mode="one">
+          id='change-tz-dropdown'
+          filterable
+          selection-mode="one">
       </smart-drop-down-list>
     </div>
   </section>
@@ -391,10 +391,10 @@
 </footer>
 
 <smart-window
-  id='change-location-window'
-  header-buttons='["close"]'
-  modal
-  label='Change Location'
+    id='change-location-window'
+    header-buttons='["close"]'
+    modal
+    label='Change Location'
 ></smart-window>
 
 <script>
@@ -434,8 +434,8 @@
   }
 
   let datetimeFormats = null;
-  function updateDatetimeFormats()
-  {
+
+  function updateDatetimeFormats() {
     const tzValue = getTimezoneUsecase.apply();
     datetimeFormats = {
       month: new Intl.DateTimeFormat(locale, {
@@ -470,6 +470,7 @@
       }),
     }
   }
+
   updateDatetimeFormats();
 
 
@@ -681,25 +682,18 @@
     const el = d.getElementById('location-value');
     const position = geoPositionRepository.get();
     if (position) {
-      const numberFormat = new Intl.NumberFormat(locale, {
-        minimumFractionDigits: 5,
-        maximumFractionDigits: 5,
+      const url = new URL("https://nominatim.openstreetmap.org/reverse");
+      url.searchParams.set("format", "jsonv2");
+      url.searchParams.set("lat", position.latitude);
+      url.searchParams.set("lon", position.longitude);
+      url.searchParams.set("accept-language", locale);
+      fetch(url).then(response => {
+        if (response.ok) {
+          response.json().then(data => {
+            el.textContent = data.display_name + '.';
+          });
+        }
       });
-      el.textContent = numberFormat.format(position.latitude) + ' ' + numberFormat.format(position.longitude);
-      {
-        const url = new URL("https://nominatim.openstreetmap.org/reverse");
-        url.searchParams.set("format", "jsonv2");
-        url.searchParams.set("lat", position.latitude);
-        url.searchParams.set("lon", position.longitude);
-        url.searchParams.set("accept-language", locale);
-        fetch(url).then(response => {
-          if (response.ok) {
-            response.json().then(data => {
-              el.textContent += '; ' + data.display_name + '.';
-            });
-          }
-        });
-      }
     } else {
       const spinner = d.createElement('img');
       spinner.style.height = '2em';
