@@ -1,0 +1,175 @@
+{
+  "head": {
+    "title": "Islamic Fasting Calendar",
+    "fastingReasons": {
+      "generic": {
+        "cites": [
+          {
+            "quote": "Every deed of the son of Adam is for him except fasting; it is for Me, and I shall reward for it.",
+            "references": [
+              "Sahih al-Bukhari, Hadith 1904",
+              "Sahih Muslim, Hadith 1151"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "settings": {
+    "location": "Location",
+    "change": "Change",
+    "timeZone": "Time zone",
+    "changeLocationWindowTitle": "Change Location",
+    "save": "Ok",
+    "default": "Default"
+  },
+  "calendar": {
+    "currentMonth": "Current Month",
+    "sunrise": "Sunrise",
+    "sunset": "Sunset",
+    "months": {
+      "01": "Muharram",
+      "02": "Safar",
+      "03": "Rabiʻ I",
+      "04": "Rabiʻ II",
+      "05": "Jumada I",
+      "06": "Jumada II",
+      "07": "Rajab",
+      "08": "Shaʻban",
+      "09": "Ramadan",
+      "10": "Shawwal",
+      "11": "Dhuʻl-Qiʻdah",
+      "12": "Dhuʻl-Hijjah"
+    }
+  },
+  "fastingReasons": {
+    "fasting-reason-ramadan": {
+      "title": "Ramadan",
+      "cites": [
+        {
+          "quote": "Islam is built upon five: the testimony that none has the right to be worshipped but Allah and that Muhammad is the Messenger of Allah, establishing prayer, giving zakat, performing Hajj, and fasting Ramadan.",
+          "references": [
+            "Sahih al-Bukhari, Hadith 8",
+            "Sahih Muslim, Hadith 16"
+          ]
+        },
+        {
+          "quote": "Whoever fasts Ramadan out of faith and in the hope of reward, his previous sins will be forgiven.",
+          "references": [
+            "Sahih al-Bukhari, Hadith 38",
+            "Sahih Muslim, Hadith 760"
+          ]
+        }
+      ]
+    },
+    "fasting-reason-shawwal": {
+      "title": "Six Days of Shawwal",
+      "cites": [
+        {
+          "quote": "Whoever fasts Ramadan and then follows it with six days of Shawwal, it is as if he fasted for a lifetime.",
+          "references": [
+            "Sahih Muslim, Hadith 1164"
+          ]
+        },
+        {
+          "quote": "Whoever fasts six days after Eid al-Fitr will have completed the year: whoever does a good deed will have ten times the like thereof.",
+          "references": [
+            "Sunan Ibn Majah, Hadith 1715"
+          ]
+        },
+        {
+          "quote": "Whoever fasts the month of Ramadan and then follows it with six days of fasting in the month of Shawwal, it will be as if he has fasted for the entire year.",
+          "references": [
+            "Sahih Muslim, Hadith 1164"
+          ]
+        }
+      ]
+    },
+    "fasting-reason-arafah-or-ashura": {
+      "title": "Days of ‘Arafah and `Ashura",
+      "cites": [
+        {
+          "intro": "Abu Qatada reported the Messenger (Muhammad) said:",
+          "quote": "I seek from Allah that fasting on the day of 'Arafa may atone for the sins of the preceding and the coming years, and I seek from Allah that fasting on the day of Ashura may atone for the sins of the preceding year.",
+          "references": [
+            "Sahih Muslim, Hadith 1162"
+          ]
+        }
+      ]
+    },
+    "fasting-reason-first-9-dhu-al-hijjah": {
+      "title": "First nine days of Dhu al-Hijjah",
+      "cites": [
+        {
+          "intro": "One of the wives of the Prophet Muhammad said:",
+          "quote": "The Messenger of Allah Muhammad used to fast the first nine days of Dhu al-Hijjah, the day of Ashura, and three days of every month…",
+          "references": [
+            "Abi Dawud, Hadith 2437",
+            "an-Nasa'i, Hadith 2417"
+          ]
+        }
+      ]
+    },
+    "fasting-reason-white-days": {
+      "title": "White Days",
+      "cites": [
+        {
+          "intro": "The Prophet Muhammad advised Abu Dharr (RA):",
+          "quote": "If you fast any part of the month, then fast the thirteenth, fourteenth and fifteenth.",
+          "references": [
+            "Jami` at-Tirmidhi, Hadith 761"
+          ]
+        },
+        {
+          "intro": "The Messenger of Allah said Abu Dharr:",
+          "quote": "Fasting three days of every month is like fasting for a lifetime.",
+          "references": [
+            "Sahih al-Bukhari, Hadith 1975",
+            "Sahih Muslim, Hadith 1162",
+            "Sunan an-Nasa'i, Hadith 2420",
+            "Sunan Ibn Majah, Hadith 1708"
+          ]
+        },
+        {
+          "intro": "Abu Hurairah (RA) said:",
+          "quote": "My close friend (the Prophet Muhammad) advised me to do three things: to fast three days of every month, pray two rak‘at of Duha, and pray Witr before sleeping.",
+          "references": [
+            "Sahih al-Bukhari, Hadith 722",
+            "Sunan Abi Dawud, Hadith 1433"
+          ]
+        }
+      ]
+    },
+    "fasting-reason-monday-thursday": {
+      "title": "Monday and Thursday",
+      "cites": [
+        {
+          "intro": "This specific statement is narrated by Abu Hurairah:",
+          "quote": "Deeds are presented on Mondays and Thursdays, and I love that my deeds be presented while I am fasting.",
+          "references": [
+            "Jami` at-Tirmidhi, Hadith 747",
+            "Sunan an-Nasa'i, Hadith 2358",
+            "Riyad as-Salihin, Book 9, Hadith 1256"
+          ]
+        },
+        {
+          "intro": "The Prophet was asked about fasting on Monday, and he said:",
+          "quote": "That is the day on which I was born and the day on which revelation came to me.",
+          "references": [
+            "Sahih Muslim, Hadith 1162"
+          ]
+        },
+        {
+          "intro": "Aishah (RA) reported:",
+          "quote": "The Prophet used to be keen to fast on Mondays and Thursdays.",
+          "references": [
+            "Jami` at-Tirmidhi, Hadith 745"
+          ]
+        }
+      ]
+    }
+  },
+  "errors": {
+    "locationAccess": "Error getting location:"
+  }
+}
