@@ -106,7 +106,8 @@
 
           div.calendar-grid-cell-hijri-month {
             color: #00b300;
-            font-size: small;
+            font-size: x-small;
+            overflow-wrap: break-word;
           }
 
           div.calendar-grid-cell-hijri-date {
@@ -115,26 +116,28 @@
 
           div.calendar-grid-cell-fasting-undefined {
             color: #b3b300;
-            font-size: small;
+            font-size: x-small;
 
             img.calendar-grid-cell-fasting-undefined-spinner {
-              width: 1.8ch;
-              height: 1.8ch;
+              width: 0.5em;
+              height: 0.5em;
             }
           }
 
           div.calendar-grid-cell-fasting {
             color: #ffff00;
-            font-size: small;
+            font-size: x-small;
           }
         }
 
         div.calendar-grid-cell-today {
-          background-image: url("./moon-hand-drawn-circle-svgrepo-com.svg");
-          background-size: 80% 100%;
+          background-image: url("hand-drawn-circle.svg");
+          background-size: auto 100%;
+          @media (max-width: 35em) {
+            background-size: 100% 100%;
+          }
           background-position: center;
           background-repeat: no-repeat;
-          background-origin: content-box;
         }
       }
     }
