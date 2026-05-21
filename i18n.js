@@ -5,8 +5,12 @@ export async function i18n(path) {
   if (!i18nCache) {
     i18nCache = await (await fetch(`i18n/${i18nLocale}.json`)).json();
   }
-  const value = path.split('.').reduce((obj, key) => obj?.[key], i18nCache);
-  return value ? value : path;
+  if (path) {
+    const value = path.split('.').reduce((obj, key) => obj?.[key], i18nCache);
+    return value ? value : path;
+  } else {
+    return i18nCache;
+  }
 }
 
 export async function setI18nLocale(locale) {

@@ -1,4 +1,15 @@
 {
+  "hadithReferencing": {
+    "collections": {
+      "bukhari": "Sahih al-Bukhari",
+      "muslim": "Sahih Muslim",
+      "ibnmajah": "Sunan Ibn Majah",
+      "tirmidhi": "Jami` at-Tirmidhi",
+      "nasai": "Sunan an-Nasa'i",
+      "abudawud": "Sunan Abi Dawud",
+      "riyadussalihin": "Riyad as-Salihin"
+    }
+  },
   "head": {
     "title": "Islamic Fasting Calendar",
     "fastingReasons": {
@@ -7,8 +18,10 @@
           {
             "quote": "Every deed of the son of Adam is for him except fasting; it is for Me, and I shall reward for it.",
             "references": [
-              "Sahih al-Bukhari, Hadith 1904",
-              "Sahih Muslim, Hadith 1151"
+              {
+                "collection": "bukhari",
+                "hadith": "1904"
+              }
             ]
           }
         ]
@@ -49,15 +62,27 @@
         {
           "quote": "Islam is built upon five: the testimony that none has the right to be worshipped but Allah and that Muhammad is the Messenger of Allah, establishing prayer, giving zakat, performing Hajj, and fasting Ramadan.",
           "references": [
-            "Sahih al-Bukhari, Hadith 8",
-            "Sahih Muslim, Hadith 16"
+            {
+              "collection": "bukhari",
+              "hadith": "8"
+            },
+            {
+              "collection": "muslim",
+              "hadith": "16"
+            }
           ]
         },
         {
           "quote": "Whoever fasts Ramadan out of faith and in the hope of reward, his previous sins will be forgiven.",
           "references": [
-            "Sahih al-Bukhari, Hadith 38",
-            "Sahih Muslim, Hadith 760"
+            {
+              "collection": "bukhari",
+              "hadith": "38"
+            },
+            {
+              "collection": "muslim",
+              "hadith": "760"
+            }
           ]
         }
       ]
@@ -66,21 +91,30 @@
       "title": "Six Days of Shawwal",
       "cites": [
         {
-          "quote": "Whoever fasts Ramadan and then follows it with six days of Shawwal, it is as if he fasted for a lifetime.",
+          "quote": "Whoever fasts six days after the Fitr will have completed the year, for whoever does a good deed will have the reward of ten like it.",
           "references": [
-            "Sahih Muslim, Hadith 1164"
+            {
+              "collection": "ibnmajah",
+              "hadith": "1715"
+            }
           ]
         },
         {
-          "quote": "Whoever fasts six days after Eid al-Fitr will have completed the year: whoever does a good deed will have ten times the like thereof.",
+          "quote": "Whoever fasts Ramadan then follows it with six days of Shawwal, it is as if he fasted for a lifetime.",
           "references": [
-            "Sunan Ibn Majah, Hadith 1715"
+            {
+              "collection": "ibnmajah",
+              "hadith": "1716"
+            }
           ]
         },
         {
           "quote": "Whoever fasts the month of Ramadan and then follows it with six days of fasting in the month of Shawwal, it will be as if he has fasted for the entire year.",
           "references": [
-            "Sahih Muslim, Hadith 1164"
+            {
+              "collection": "muslim",
+              "hadith": "1164"
+            }
           ]
         }
       ]
@@ -89,10 +123,13 @@
       "title": "Days of ‘Arafah and `Ashura",
       "cites": [
         {
-          "intro": "Abu Qatada reported the Messenger (Muhammad) said:",
+          "intro": "Abu Qatada (ra) reported the Messenger Muhammad (pbuh) said:",
           "quote": "I seek from Allah that fasting on the day of 'Arafa may atone for the sins of the preceding and the coming years, and I seek from Allah that fasting on the day of Ashura may atone for the sins of the preceding year.",
           "references": [
-            "Sahih Muslim, Hadith 1162"
+            {
+              "collection": "muslim",
+              "hadith": "1162"
+            }
           ]
         }
       ]
@@ -101,11 +138,17 @@
       "title": "First nine days of Dhu al-Hijjah",
       "cites": [
         {
-          "intro": "One of the wives of the Prophet Muhammad said:",
+          "intro": "One of the wives (ra) of the Prophet Muhammad (pbuh) said:",
           "quote": "The Messenger of Allah Muhammad used to fast the first nine days of Dhu al-Hijjah, the day of Ashura, and three days of every month…",
           "references": [
-            "Abi Dawud, Hadith 2437",
-            "an-Nasa'i, Hadith 2417"
+            {
+              "collection": "abudawud",
+              "hadith": "2437"
+            },
+            {
+              "collection": "nasai",
+              "hadith": "2417"
+            }
           ]
         }
       ]
@@ -114,28 +157,73 @@
       "title": "White Days",
       "cites": [
         {
-          "intro": "The Prophet Muhammad advised Abu Dharr (RA):",
+          "intro": "The Prophet Muhammad (pbuh) advised Abu Dharr (ra):",
           "quote": "If you fast any part of the month, then fast the thirteenth, fourteenth and fifteenth.",
           "references": [
-            "Jami` at-Tirmidhi, Hadith 761"
+            {
+              "collection": "tirmidhi",
+              "hadith": "761"
+            }
+          ]
+        },
+        {
+          "intro": "Narrated `Abdullah bin `Amr bin Al-`As:",
+          "quote": "And it is sufficient for you to fast three days in a month, as the reward of a good deed is multiplied ten times, so it will be like fasting throughout the year.",
+          "references": [
+            {
+              "collection": "bukhari",
+              "hadith": "1975"
+            }
+          ]
+        },
+        {
+          "intro": "bu Qatada (ar) reported  the Messenger of Allah (pbuh) said:",
+          "quote": "Fasting three days every month and that of Ramadan every year is a perpetual fasting.",
+          "references": [
+            {
+              "collection": "muslim",
+              "hadith": "1162"
+            }
           ]
         },
         {
           "intro": "The Messenger of Allah said Abu Dharr:",
           "quote": "Fasting three days of every month is like fasting for a lifetime.",
           "references": [
-            "Sahih al-Bukhari, Hadith 1975",
-            "Sahih Muslim, Hadith 1162",
-            "Sunan an-Nasa'i, Hadith 2420",
-            "Sunan Ibn Majah, Hadith 1708"
+            {
+              "collection": "ibnmajah",
+              "hadith": "1708"
+            }
           ]
         },
         {
-          "intro": "Abu Hurairah (RA) said:",
+          "intro": "It was narrated from Jarir bin 'Abdullah (ra) that the Prophet (pbuh) said:",
+          "quote": "Fasting three days of each month is fasting for a lifetime, and the shining days of Al-Bid, the thirteenth, fourteenth and fifteenth.",
+          "references": [
+            {
+              "collection": "nasai",
+              "hadith": "2420"
+            }
+          ]
+        },
+        {
+          "intro": "Narrated Abu Huraira (ra):",
           "quote": "My close friend (the Prophet Muhammad) advised me to do three things: to fast three days of every month, pray two rak‘at of Duha, and pray Witr before sleeping.",
           "references": [
-            "Sahih al-Bukhari, Hadith 722",
-            "Sunan Abi Dawud, Hadith 1433"
+            {
+              "collection": "bukhari",
+              "hadith": "1981"
+            }
+          ]
+        },
+        {
+          "intro": "Abu Al-Darda' (ra) reported the Prophet (pbuh) said:",
+          "quote": "My friend instructed me to observe three practices which I never leave: he instructed me to fast three days every month, and not to sleep but after observing the witr, and to observe supererogatory prayer in the forenoon while traveling and while resident.",
+          "references": [
+            {
+              "collection": "abudawud",
+              "hadith": "1433"
+            }
           ]
         }
       ]
@@ -144,26 +232,47 @@
       "title": "Monday and Thursday",
       "cites": [
         {
-          "intro": "This specific statement is narrated by Abu Hurairah:",
+          "intro": "This specific statement is narrated by Abu Hurairah (ra):",
           "quote": "Deeds are presented on Mondays and Thursdays, and I love that my deeds be presented while I am fasting.",
           "references": [
-            "Jami` at-Tirmidhi, Hadith 747",
-            "Sunan an-Nasa'i, Hadith 2358",
-            "Riyad as-Salihin, Book 9, Hadith 1256"
+            {
+              "collection": "tirmidhi",
+              "hadith": "747"
+            },
+            {
+              "collection": "riyadussalihin",
+              "hadith": "1256"
+            }
           ]
         },
         {
-          "intro": "The Prophet was asked about fasting on Monday, and he said:",
-          "quote": "That is the day on which I was born and the day on which revelation came to me.",
+          "intro": "Usamah bin Zaid (ra) reported the Messenger (pbuh) said:",
+          "quote": "Those are two days in which deeds are shown to the Lord of the worlds, and I like my deeds to be shown when I am fasting.",
           "references": [
-            "Sahih Muslim, Hadith 1162"
+            {
+              "collection": "nasai",
+              "hadith": "2358"
+            }
           ]
         },
         {
-          "intro": "Aishah (RA) reported:",
+          "intro": "The Prophet (pbuh) was asked by Abu Qatada al-Ansari (ra) about fasting on Monday, and he said:",
+          "quote": "It was the day on which I was born. on which I was commissioned with prophethood or revelation was sent to me,",
+          "references": [
+            {
+              "collection": "muslim",
+              "hadith": "1162b"
+            }
+          ]
+        },
+        {
+          "intro": "Aishah (ra) narrated:",
           "quote": "The Prophet used to be keen to fast on Mondays and Thursdays.",
           "references": [
-            "Jami` at-Tirmidhi, Hadith 745"
+            {
+              "collection": "tirmidhi",
+              "hadith": "745"
+            }
           ]
         }
       ]

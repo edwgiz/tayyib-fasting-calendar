@@ -3,6 +3,7 @@ import {i18n} from './i18n.js';
 const d = document;
 
 export async function renderFastingReasonSections(containerEl, i18nPrefix) {
+  const hadithCollectionReferencing = (await i18n()).hadithReferencing.collections;
   const reasonsNode = await i18n(i18nPrefix);
   if (reasonsNode) {
     for (const reasonId in reasonsNode) {
@@ -26,7 +27,12 @@ export async function renderFastingReasonSections(containerEl, i18nPrefix) {
         citeEl.appendChild(qEl);
         for (let referenceNode of citeNode.references) {
           const referenceEl = d.createElement('blockquote');
-          referenceEl.textContent = referenceNode;
+          const aEl = d.createElement('a');
+          aEl.target = '_blank';
+          aEl.rel = 'noopener noreferrer';
+          aEl.href = 'https://sunnah.com/' + referenceNode.collection + ':' + referenceNode.hadith;
+          aEl.textContent = hadithCollectionReferencing[referenceNode.collection] + ' ' + referenceNode.hadith;
+          referenceEl.appendChild(aEl);
           citeEl.appendChild(referenceEl);
         }
         citesEl.appendChild(citeEl);
