@@ -19,7 +19,6 @@
     import './i18n-text.js'
   </script>
   <script src="https://unpkg.com/suncalc@1.9.0/suncalc.js"></script>
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
   <title>Tayyib Fasting Calendar</title>
 
@@ -203,6 +202,10 @@
 
     smart-window#change-location-window {
       border-color: var(--smart-base-100) !important;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
     }
 
     div.smart-header-section {
@@ -279,20 +282,19 @@
     </div>
     <div>
       <smart-drop-down-list
-        id='change-tz-dropdown'
-        filterable
-        selection-mode="one"
-        scroll-mode=""
+          id='change-tz-dropdown'
+          filterable
+          selection-mode="one"
+          disabled="disabled"
       ></smart-drop-down-list>
     </div>
   </section>
 </footer>
 
 <smart-window
-  id='change-location-window'
-  header-buttons='["close"]'
-  modal
-
+    id='change-location-window'
+    header-buttons='["close"]'
+    modal
 ></smart-window>
 
 <script type="module">
@@ -520,7 +522,7 @@
             const hijriMonthEl = d.createElement('div');
             hijriMonthEl.classList.add('calendar-grid-cell-hijri-month');
             let hijriMonth = await i18n('calendar.months.' + hijriMonthNumber);
-            if(hijriMonth.startsWith('calendar.months.')) {
+            if (hijriMonth.startsWith('calendar.months.')) {
               hijriMonth = datetimeFormats.hijriMonth.format(date);
             }
             hijriMonthEl.textContent = hijriMonth;
@@ -630,8 +632,7 @@
     }
   }
 
-  updateCalendarDates();
-  updateLocationDescription();
+  requestAnimationFrame(updateCalendarDates);
 
   function updateLocationByDevice() {
     navigator.geolocation.getCurrentPosition(
@@ -648,7 +649,10 @@
     );
   }
 
-  updateLocationByDevice();
+  requestIdleCallback(() => {
+    updateLocationDescription();
+    updateLocationByDevice();
+  });
 
   let changeLocationWindowEl = null;
   let changeLocationMarker = null;
@@ -666,6 +670,7 @@
     if (changeLocationWindowEl == null) {
       changeLocationWindowEl = d.getElementById('change-location-window');
       changeLocationWindowEl.label = await i18n('settings.changeLocationWindowTitle');
+      await import('https://unpkg.com/leaflet/dist/leaflet.js');
       changeLocationMapView = L.map('change-location-windowContent').setView([geoPosition.latitude, geoPosition.longitude], 8);
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
@@ -703,18 +708,27 @@
     changeLocationWindowEl.open();
   });
 
-  const changeTzDropdown = d.getElementById('change-tz-dropdown');
-  changeTzDropdown.filterable = true;
-  changeTzDropdown.filterMode = 'contains';
-  changeTzDropdown.dataSource = Intl.supportedValuesOf('timeZone').map(v => ({'l': v, 'v': v}));
-  changeTzDropdown.displayMember = 'l';
-  changeTzDropdown.valueMember = 'v';
-  changeTzDropdown.selectedValues = [getTimezoneUsecase.apply()];
-  changeTzDropdown.horizontalScrollBarVisibility = 'hidden';
-  changeTzDropdown.addEventListener('change', (event) => {
-    timezoneRepository.set(event.detail.value);
-    updateDatetimeFormats();
-    update();
+  requestIdleCallback(() => {
+    const changeTzDropdown = d.getElementById('change-tz-dropdown');
+    changeTzDropdown.disabled = false;
+    changeTzDropdown.filterable = true;
+    changeTzDropdown.filterMode = 'contains';
+    changeTzDropdown.horizontalScrollBarVisibility = 'hidden';
+    changeTzDropdown.virtualized = true;
+    changeTzDropdown.dataSource = Intl.supportedValuesOf('timeZone').map(v => ({'l': v, 'v': v}));
+    changeTzDropdown.displayMember = 'l';
+    changeTzDropdown.valueMember = 'v';
+    const selectedValue = getTimezoneUsecase.apply();
+    changeTzDropdown.selectedValues = [selectedValue];
+    const selectedItem = changeTzDropdown.getItem(selectedValue);
+    if(selectedItem) {
+      changeTzDropdown.ensureVisible(selectedItem);
+    }
+    changeTzDropdown.addEventListener('change', (event) => {
+      timezoneRepository.set(event.detail.value);
+      updateDatetimeFormats();
+      update();
+    });
   });
 </script>
 </body>
