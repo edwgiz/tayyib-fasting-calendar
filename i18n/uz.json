@@ -1,0 +1,284 @@
+{
+  "hadithReferencing": {
+    "collections": {
+      "bukhari": "Al-Buxoriy sahihi",
+      "muslim": "Muslim sahihi",
+      "ibnmajah": "Ibn Maja sunani",
+      "tirmidhi": "Tirmiziy jome‘i",
+      "nasai": "Nasoiy sunani",
+      "abudawud": "Abu Dovud sunani",
+      "riyadussalihin": "Riyoz us-Solihiyn"
+    }
+  },
+  "head": {
+    "title": "Islomiy ro‘za taqvimi",
+    "fastingReasons": {
+      "generic": {
+        "cites": [
+          {
+            "quote": "Odam bolasining har bir amali o‘zi uchun, ro‘za bundan mustasno, u Men uchundir va Men uni mukofotlayman.",
+            "references": [
+              {
+                "collection": "bukhari",
+                "hadith": "1904"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "settings": {
+    "location": "Joylashuv",
+    "change": "O‘zgartirish",
+    "timeZone": "Vaqt mintaqasi",
+    "changeLocationWindowTitle": "Joylashuvni o‘zgartirish",
+    "save": "Ok",
+    "default": "Standart"
+  },
+  "calendar": {
+    "currentMonth": "Joriy oy",
+    "sunrise": "Quyosh chiqishi",
+    "sunset": "Quyosh botishi",
+    "months": {
+      "01": "Muharram",
+      "02": "Safar",
+      "03": "Rabi‘ ul-avval",
+      "04": "Rabi‘ ul-oxir",
+      "05": "Jumod ul-ula",
+      "06": "Jumod ul-oxir",
+      "07": "Rajab",
+      "08": "Sha‘bon",
+      "09": "Ramazon",
+      "10": "Shavvol",
+      "11": "Zulqa‘da",
+      "12": "Zulhijja"
+    }
+  },
+  "fastingReasons": {
+    "fasting-reason-ramadan": {
+      "title": "Ramazon",
+      "cites": [
+        {
+          "quote": "Islom besh narsa ustiga qurilgan: Allohdan o‘zga iloh yo‘qligiga va Muhammad Allohning rasuli ekanligiga guvohlik berish, namozni to‘kiz ado etish, zakot berish, Haj qilish va Ramazon ro‘zasini tutish.",
+          "references": [
+            {
+              "collection": "bukhari",
+              "hadith": "8"
+            },
+            {
+              "collection": "muslim",
+              "hadith": "16"
+            }
+          ]
+        },
+        {
+          "quote": "Kim Ramazon oyida iymon bilan va savob umidida ro‘za tutsa, uning oldingi gunohlari kechirilur.",
+          "references": [
+            {
+              "collection": "bukhari",
+              "hadith": "38"
+            },
+            {
+              "collection": "muslim",
+              "hadith": "760"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-shawwal": {
+      "title": "Shavvol oyining olti kuni ro‘zasi",
+      "cites": [
+        {
+          "quote": "Kim Fitrdan keyin olti kun ro‘za tutsa, yilni to‘ldirgan bo‘lur, chunki har bir yaxshilik o‘n barobar mukofotlanur.",
+          "references": [
+            {
+              "collection": "ibnmajah",
+              "hadith": "1715"
+            }
+          ]
+        },
+        {
+          "quote": "Kim Ramazon ro‘zasini tutib, so‘ngra Shavvol oyidan olti kun ro‘za tutsa, go‘yo butun yil ro‘za tutgandek bo‘lur.",
+          "references": [
+            {
+              "collection": "ibnmajah",
+              "hadith": "1716"
+            }
+          ]
+        },
+        {
+          "quote": "Kim Ramazon oyini ro‘za tutib, so‘ngra Shavvol oyida olti kun ro‘za tutsa, butun yil ro‘za tutgandek savob olur.",
+          "references": [
+            {
+              "collection": "muslim",
+              "hadith": "1164"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-arafah-or-ashura": {
+      "title": "Arafa va Ashuro kunlari",
+      "cites": [
+        {
+          "intro": "Abu Qatoda (r.a.) rivoyat qiladiki, Rasululloh (s.a.v.) dedilar:",
+          "quote": "Arafa kuni ro‘zasi oldingi va keyingi yilning gunohlariga kafforat bo‘lishini Allohdan umid qilaman va Ashuro kuni ro‘zasi oldingi yilning gunohlariga kafforat bo‘lishini umid qilaman.",
+          "references": [
+            {
+              "collection": "muslim",
+              "hadith": "1162"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-first-9-dhu-al-hijjah": {
+      "title": "Zulhijjaning birinchi to‘qqiz kuni",
+      "cites": [
+        {
+          "intro": "Nabiy (s.a.v.)ning zovjalaridan biri (r.a.) aytdilar:",
+          "quote": "Allohning Rasululloh Zulhijjaning to‘qqiz kuni, Ashuro kuni va har oydan uch kun ro‘za tutar edilar…",
+          "references": [
+            {
+              "collection": "abudawud",
+              "hadith": "2437"
+            },
+            {
+              "collection": "nasai",
+              "hadith": "2417"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-white-days": {
+      "title": "Oq kunlar (Ayomu bayz)",
+      "cites": [
+        {
+          "intro": "Nabiy (s.a.v.) Abu Zar (r.a.)ga nasihat qilib dedilar:",
+          "quote": "Agar oydan biror kun ro‘za tutsang, u holda o‘n uchinchi, o‘n to‘rtinchi va o‘n beshinchi kunlarda ro‘za tut.",
+          "references": [
+            {
+              "collection": "tirmidhi",
+              "hadith": "761"
+            }
+          ]
+        },
+        {
+          "intro": "Abdulloh ibn Amr ibn al-Os (r.a.) rivoyat qiladilar:",
+          "quote": "Senga har oyda uch kun ro‘za tutish kifoya, chunki yaxshilik o‘n barobar mukofotlanur, shunda butun yil ro‘za tutgandek bo‘lur.",
+          "references": [
+            {
+              "collection": "bukhari",
+              "hadith": "1975"
+            }
+          ]
+        },
+        {
+          "intro": "Abu Qatoda (r.a.) rivoyat qiladiki, Rasululloh (s.a.v.) dedilar:",
+          "quote": "Har oyda uch kun ro‘za tutish — bu doimiy ro‘zadir, Ramazon ro‘zasi esa har yilgi ro‘zadir.",
+          "references": [
+            {
+              "collection": "muslim",
+              "hadith": "1162"
+            }
+          ]
+        },
+        {
+          "intro": "Rasululloh (s.a.v.) Abu Zarga (r.a.) dedilar:",
+          "quote": "Har oyda uch kun ro‘za tutish butun yil ro‘za tutgandekdir.",
+          "references": [
+            {
+              "collection": "ibnmajah",
+              "hadith": "1708"
+            }
+          ]
+        },
+        {
+          "intro": "Jarir ibn Abdulloh (r.a.) rivoyat qiladiki, Nabiy (s.a.v.) dedilar:",
+          "quote": "Har oyda uch kun ro‘za tutish butun yil ro‘zasi kabidir. Bayz kunlari — o‘n uchinchi, o‘n to‘rtinchi va o‘n beshinchi kunlardir.",
+          "references": [
+            {
+              "collection": "nasai",
+              "hadith": "2420"
+            }
+          ]
+        },
+        {
+          "intro": "Abu Hurayra (r.a.) rivoyat qiladilar:",
+          "quote": "Do‘stim (s.a.v.) menga uch narsani tavsiya qildi: har oyda uch kun ro‘za tutish, zuho namozini o‘qish va uyqudan oldin vitr o‘qish.",
+          "references": [
+            {
+              "collection": "bukhari",
+              "hadith": "1981"
+            }
+          ]
+        },
+        {
+          "intro": "Abu Dardo (r.a.) rivoyat qiladiki, Nabiy (s.a.v.) dedilar:",
+          "quote": "Do‘stim menga uch amalni tavsiya qildi, ularni hech qachon tark etmayman: har oyda uch kun ro‘za tutish, zuho namozini o‘qish va vitrsiz uxlamaslik.",
+          "references": [
+            {
+              "collection": "abudawud",
+              "hadith": "1433"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-monday-thursday": {
+      "title": "Dushanba va payshanba",
+      "cites": [
+        {
+          "intro": "Abu Hurayra (r.a.) aytadilar: Rasululloh (s.a.v.) dedilar:",
+          "quote": "Amallar dushanba va payshanba kunlari taqdim etilur va men amallarim ro‘za holda taqdim etilishini yaxshi ko‘raman.",
+          "references": [
+            {
+              "collection": "tirmidhi",
+              "hadith": "747"
+            },
+            {
+              "collection": "riyadussalihin",
+              "hadith": "1256"
+            }
+          ]
+        },
+        {
+          "intro": "Usoma ibn Zayd (r.a.) rivoyat qiladiki, Rasululloh (s.a.v.) dedilar:",
+          "quote": "Bu ikki kun dunyolar Robbiga amallar taqdim etiladigan kunlardir va men amallarim ro‘za holatida taqdim etilishini istayman.",
+          "references": [
+            {
+              "collection": "nasai",
+              "hadith": "2358"
+            }
+          ]
+        },
+        {
+          "intro": "Abu Qatoda al-Ansoriy (r.a.) dan: Nabiy (s.a.v.)ga dushanba kuni ro‘zasi haqida so‘ralganda dedilar:",
+          "quote": "U (dushanba) men tug‘ilgan kun va payg‘ambar etib yuborilgan yoki vahiy nozil qilingan kundir.",
+          "references": [
+            {
+              "collection": "muslim",
+              "hadith": "1162b"
+            }
+          ]
+        },
+        {
+          "intro": "Oisha (r.a.) rivoyat qiladilar:",
+          "quote": "Nabiy (s.a.v.) dushanba va payshanba kunlari ro‘za tutishga intilar edilar.",
+          "references": [
+            {
+              "collection": "tirmidhi",
+              "hadith": "745"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "errors": {
+    "locationAccess": "Joylashuvni olishda xato:"
+  }
+}
