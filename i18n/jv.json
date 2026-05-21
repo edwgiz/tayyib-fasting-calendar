@@ -1,0 +1,284 @@
+{
+  "hadithReferencing": {
+    "collections": {
+      "bukhari": "Shahih Bukhari",
+      "muslim": "Shahih Muslim",
+      "ibnmajah": "Sunan Ibnu Majah",
+      "tirmidhi": "Jami` at-Tirmidzi",
+      "nasai": "Sunan an-Nasa'i",
+      "abudawud": "Sunan Abu Dawud",
+      "riyadussalihin": "Riyadus Shalihin"
+    }
+  },
+  "head": {
+    "title": "Kalèndher Pasa Islam",
+    "fastingReasons": {
+      "generic": {
+        "cites": [
+          {
+            "quote": "Saben amalé anak Adam iku kanggo dhèwèké dhéwé, kajaba pasa; iku kanggo Ingsun, lan Ingsun sing bakal maringi ganjaran.",
+            "references": [
+              {
+                "collection": "bukhari",
+                "hadith": "1904"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "settings": {
+    "location": "Panggonan",
+    "change": "Ganti",
+    "timeZone": "Zona wektu",
+    "changeLocationWindowTitle": "Ganti Panggonan",
+    "save": "Ok",
+    "default": "Baku"
+  },
+  "calendar": {
+    "currentMonth": "Sasi Iki",
+    "sunrise": "Mlethek Srengéngé",
+    "sunset": "Surup Srengéngé",
+    "months": {
+      "01": "Muharram",
+      "02": "Safar",
+      "03": "Rabi'ul Awwal",
+      "04": "Rabi'ul Akhir",
+      "05": "Jumadil Awwal",
+      "06": "Jumadil Akhir",
+      "07": "Rajab",
+      "08": "Sya'ban",
+      "09": "Ramadan",
+      "10": "Syawal",
+      "11": "Dzul Qa'dah",
+      "12": "Dzul Hijjah"
+    }
+  },
+  "fastingReasons": {
+    "fasting-reason-ramadan": {
+      "title": "Ramadan",
+      "cites": [
+        {
+          "quote": "Islam iku dibangun ing limang perkara: paseksen yèn ora ana sesembahan kang haq saliyané Allah lan yèn Muhammad iku utusané Allah, ngedegaké shalat, mbayar zakat, nglakoni haji, lan pasa Ramadan.",
+          "references": [
+            {
+              "collection": "bukhari",
+              "hadith": "8"
+            },
+            {
+              "collection": "muslim",
+              "hadith": "16"
+            }
+          ]
+        },
+        {
+          "quote": "Sapa waé sing pasa Ramadan kanthi iman lan ngarep-arep ganjaran, dosané kang wis kepungkur bakal diampuni.",
+          "references": [
+            {
+              "collection": "bukhari",
+              "hadith": "38"
+            },
+            {
+              "collection": "muslim",
+              "hadith": "760"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-shawwal": {
+      "title": "Nemu Dina ing Syawal",
+      "cites": [
+        {
+          "quote": "Sapa sing pasa nem dina sawisé Fitri (Syawal), iku kaya nyempurnakake setaun, amarga saben kabecikan dibales sepuluh kaya mangkono.",
+          "references": [
+            {
+              "collection": "ibnmajah",
+              "hadith": "1715"
+            }
+          ]
+        },
+        {
+          "quote": "Sapa sing pasa Ramadan banjur nerusaké karo nem dina Syawal, iku kaya pasa salawasé urip.",
+          "references": [
+            {
+              "collection": "ibnmajah",
+              "hadith": "1716"
+            }
+          ]
+        },
+        {
+          "quote": "Sapa sing pasa ing sasi Ramadan banjur ngiringi karo nem dina pasa ing sasi Syawal, iku kaya wong pasa setaun kabèh.",
+          "references": [
+            {
+              "collection": "muslim",
+              "hadith": "1164"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-arafah-or-ashura": {
+      "title": "Dina 'Arafah lan 'Asyura",
+      "cites": [
+        {
+          "intro": "Abu Qatadah (ra) nyritakaké yèn Rasulullah Muhammad (saw) ngandika:",
+          "quote": "Aku ngarep-arep marang Allah yèn pasa ing dina 'Arafah iku bisa ngapura dosa setaun kepungkur lan setaun ngarep, lan aku ngarep-arep yèn pasa ing dina 'Asyura iku bisa ngapura dosa setaun kepungkur.",
+          "references": [
+            {
+              "collection": "muslim",
+              "hadith": "1162"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-first-9-dhu-al-hijjah": {
+      "title": "Sangang dina kapisan Dzul Hijjah",
+      "cites": [
+        {
+          "intro": "Sawijining garwané Nabi Muhammad (saw) ngandika:",
+          "quote": "Rasulullah Muhammad biyasa pasa sangang dina kapisan Dzul Hijjah, dina 'Asyura, lan telung dina saben sasi...",
+          "references": [
+            {
+              "collection": "abudawud",
+              "hadith": "2437"
+            },
+            {
+              "collection": "nasai",
+              "hadith": "2417"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-white-days": {
+      "title": "Dina-dina Pethak (Ayyamul Bidh)",
+      "cites": [
+        {
+          "intro": "Nabi Muhammad (saw) maringi pitutur marang Abu Dzar (ra):",
+          "quote": "Yèn kowé arep pasa ing sasi iki, pasa(a) ing tanggal telulas, patbelas, lan limalas.",
+          "references": [
+            {
+              "collection": "tirmidhi",
+              "hadith": "761"
+            }
+          ]
+        },
+        {
+          "intro": "Abdullah bin 'Amr bin al-'Ash (ra) nyritakaké:",
+          "quote": "Cukup kanggo kowé yèn pasa telung dina saben sasi, amarga saben kabecikan bakal dibalas sepuluh tikel, mula dadi kaya pasa setaun kabèh.",
+          "references": [
+            {
+              "collection": "bukhari",
+              "hadith": "1975"
+            }
+          ]
+        },
+        {
+          "intro": "Abu Qatadah (ra) nyritakaké yèn Rasulullah (saw) ngandika:",
+          "quote": "Pasa telung dina saben sasi iku minangka pasa salawasé (terus-terusan).",
+          "references": [
+            {
+              "collection": "muslim",
+              "hadith": "1162"
+            }
+          ]
+        },
+        {
+          "intro": "Rasulullah ngandika marang Abu Dzar:",
+          "quote": "Pasa telung dina saben sasi iku kaya pasa salawasé urip.",
+          "references": [
+            {
+              "collection": "ibnmajah",
+              "hadith": "1708"
+            }
+          ]
+        },
+        {
+          "intro": "Jarir bin 'Abdillah (ra) nyritakaké yèn Nabi (saw) ngandika:",
+          "quote": "Pasa telung dina saben sasi iku kaya pasa salawasé urip, yaiku dina-dina pethak, tanggal telulas, patbelas, lan limalas.",
+          "references": [
+            {
+              "collection": "nasai",
+              "hadith": "2420"
+            }
+          ]
+        },
+        {
+          "intro": "Abu Hurairah (ra) nyritakaké:",
+          "quote": "Kanca cedhakku (Nabi Muhammad) maringi pitutur telung prakara: pasa telung dina saben sasi, shalat Dhuhua rong rakaat, lan shalat Witir sadurungé turu.",
+          "references": [
+            {
+              "collection": "bukhari",
+              "hadith": "1981"
+            }
+          ]
+        },
+        {
+          "intro": "Abu Darda' (ra) nyritakaké yèn Nabi (saw) ngandika:",
+          "quote": "Kancaku (Nabi) maringi pitutur telung perkara sing ora bakal tak tinggal: dhèwèké maringi pitutur supaya pasa telung dina saben sasi, ora turur nganti nindakaké witir, lan nindakaké shalat Dhuhua ing wayah lingsir, lunga utawa ora.",
+          "references": [
+            {
+              "collection": "abudawud",
+              "hadith": "1433"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-monday-thursday": {
+      "title": "Senen lan Kemis",
+      "cites": [
+        {
+          "intro": "Abu Hurairah (ra) nyritakaké pangandikané Rasulullah (saw):",
+          "quote": "Amal iku diaturaké (marang Allah) ing dina Senen lan Kemis, lan aku seneng yèn amalku diaturaké nalika aku lagi pasa.",
+          "references": [
+            {
+              "collection": "tirmidhi",
+              "hadith": "747"
+            },
+            {
+              "collection": "riyadussalihin",
+              "hadith": "1256"
+            }
+          ]
+        },
+        {
+          "intro": "Usamah bin Zaid (ra) nyritakaké yèn Rasulullah (saw) ngandika:",
+          "quote": "Loro dina iku (Senen lan Kemis) minangka dina wektu amal diaturaké marang Pangéraning alam, lan aku seneng yèn amalku diaturaké nalika aku pasa.",
+          "references": [
+            {
+              "collection": "nasai",
+              "hadith": "2358"
+            }
+          ]
+        },
+        {
+          "intro": "Abu Qatadah al-Anshari (ra) takon marang Nabi (saw) bab pasa dina Senen, banjur dhèwèké mangsuli:",
+          "quote": "Iku dina nalika aku miyos, dina nalika aku diutus dadi nabi utawa dina nalika wahyu diturunaké marang aku.",
+          "references": [
+            {
+              "collection": "muslim",
+              "hadith": "1162b"
+            }
+          ]
+        },
+        {
+          "intro": "Aisyah (ra) nyritakaké:",
+          "quote": "Nabi iku sregep pasa ing dina Senen lan Kemis.",
+          "references": [
+            {
+              "collection": "tirmidhi",
+              "hadith": "745"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "errors": {
+    "locationAccess": "Kesalahan nalika njupuk lokasi:"
+  }
+}
