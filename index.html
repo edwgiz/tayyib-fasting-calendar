@@ -314,11 +314,10 @@
 ></smart-window>
 
 <script type="module">
-  import {setI18nLocale, i18n} from './i18n.js'
+  import {i18n} from './i18n.js'
 
   const defaultDatetimeOptions = Intl.DateTimeFormat().resolvedOptions();
   let locale = defaultDatetimeOptions.locale;
-  setI18nLocale(locale);
 
   import {renderFastingReasonSections} from './fasting-reason-section.js';
 
@@ -737,7 +736,7 @@
     const selectedValue = getTimezoneUsecase.apply();
     changeTzDropdown.selectedValues = [selectedValue];
     const selectedItem = changeTzDropdown.getItem(selectedValue);
-    if(selectedItem) {
+    if (selectedItem) {
       changeTzDropdown.ensureVisible(selectedItem);
     }
     changeTzDropdown.addEventListener('change', (event) => {
