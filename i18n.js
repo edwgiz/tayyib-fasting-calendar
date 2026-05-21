@@ -13,9 +13,9 @@ export async function i18n(path) {
   }
 }
 
-export async function setI18nLocale(locale) {
+export function setI18nLocale(locale) {
   let simpleLocale = locale.substring(0, 2);
-  if (['en'].includes(simpleLocale)) {
+  if (['en', 'ar'].includes(simpleLocale)) {
     i18nLocale = simpleLocale;
   } else {
     i18nLocale = 'en';
