@@ -1,0 +1,284 @@
+{
+  "hadithReferencing": {
+    "collections": {
+      "bukhari": "Sahihul Bukhari",
+      "muslim": "Sahih Muslim",
+      "ibnmajah": "Sunan Ibn Majah",
+      "tirmidhi": "Jami` at-Tirmidhi",
+      "nasai": "Sunan an-Nasa'i",
+      "abudawud": "Sunan Abi Dawud",
+      "riyadussalihin": "Riyadus Salihin"
+    }
+  },
+  "head": {
+    "title": "Kalandar Azumin Musulunci",
+    "fastingReasons": {
+      "generic": {
+        "cites": [
+          {
+            "quote": "Kowane aikin ɗan Adam nasa ne, sai azumi; gareni yake, kuma ni zan saka masa.",
+            "references": [
+              {
+                "collection": "bukhari",
+                "hadith": "1904"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "settings": {
+    "location": "Wuri",
+    "change": "Canza",
+    "timeZone": "Yankin lokaci",
+    "changeLocationWindowTitle": "Canza Wuri",
+    "save": "Ok",
+    "default": "Tsoho"
+  },
+  "calendar": {
+    "currentMonth": "Watan nan",
+    "sunrise": "Fitowar rana",
+    "sunset": "Faɗuwar rana",
+    "months": {
+      "01": "Muharram",
+      "02": "Safar",
+      "03": "Rabi'ul Awwal",
+      "04": "Rabi'ul Akhir",
+      "05": "Jumadal Ula",
+      "06": "Jumadal Akhira",
+      "07": "Rajab",
+      "08": "Sha'aban",
+      "09": "Ramadan",
+      "10": "Shawwal",
+      "11": "Zulƙida",
+      "12": "Zulhijja"
+    }
+  },
+  "fastingReasons": {
+    "fasting-reason-ramadan": {
+      "title": "Azumin Ramadan",
+      "cites": [
+        {
+          "quote": "An gina Musulunci a kan abubuwa biyar: shaida cewa babu abin bautawa da gaskiya sai Allah, kuma Muhammad Manzon Allah ne, tsayar da sallah, bayar da zakka, yin aikin hajji, da azumin Ramadan.",
+          "references": [
+            {
+              "collection": "bukhari",
+              "hadith": "8"
+            },
+            {
+              "collection": "muslim",
+              "hadith": "16"
+            }
+          ]
+        },
+        {
+          "quote": "Wanda ya azumci Ramadan da imani da neman lada, za a gafarta masa zunubansa da suka gabata.",
+          "references": [
+            {
+              "collection": "bukhari",
+              "hadith": "38"
+            },
+            {
+              "collection": "muslim",
+              "hadith": "760"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-shawwal": {
+      "title": "Kwanaki shida na Shawwal",
+      "cites": [
+        {
+          "quote": "Wanda ya azumci kwanaki shida bayan (Sallar) Fitr, to ya cika shekara, domin kowane aikin alheri yana da lada sau goma kamarsa.",
+          "references": [
+            {
+              "collection": "ibnmajah",
+              "hadith": "1715"
+            }
+          ]
+        },
+        {
+          "quote": "Wanda ya azumci Ramadan sannan ya bi shi da kwanaki shida na Shawwal, to kamar ya azumci zamani gaba ɗaya.",
+          "references": [
+            {
+              "collection": "ibnmajah",
+              "hadith": "1716"
+            }
+          ]
+        },
+        {
+          "quote": "Wanda ya azumci watan Ramadan sannan ya bi shi da kwanaki shida na watan Shawwal, zai zama kamar ya azumci shekara gaba ɗaya.",
+          "references": [
+            {
+              "collection": "muslim",
+              "hadith": "1164"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-arafah-or-ashura": {
+      "title": "Kwanakin Arafah da Ashura",
+      "cites": [
+        {
+          "intro": "Abu Qatada (ra) ya ruwaito Manzon Allah (s.a.w) ya ce:",
+          "quote": "Ina fata daga Allah cewa azumin ranar Arafa ya zama kaffarar zunuban shekara da ta gabata da mai zuwa, kuma ina fata daga Allah cewa azumin ranar Ashura ya zama kaffarar zunuban shekara da ta gabata.",
+          "references": [
+            {
+              "collection": "muslim",
+              "hadith": "1162"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-first-9-dhu-al-hijjah": {
+      "title": "Kwanaki tara na farko na Zulhijja",
+      "cites": [
+        {
+          "intro": "Wata daga cikin matan Annabi (s.a.w) ta ce:",
+          "quote": "Manzon Allah Muhammad (s.a.w) ya kasance yana azumin kwanaki tara na farko na Zulhijja, da ranar Ashura, da kwanaki uku na kowane wata…",
+          "references": [
+            {
+              "collection": "abudawud",
+              "hadith": "2437"
+            },
+            {
+              "collection": "nasai",
+              "hadith": "2417"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-white-days": {
+      "title": "Kwanakin fari (Ayyamul bid)",
+      "cites": [
+        {
+          "intro": "Annabi (s.a.w) ya shawarci Aba Zarr (ra) da cewa:",
+          "quote": "Idan kana son ka azumci wani sashi daga wata, to ka azumci goma sha uku, goma sha huɗu, da goma sha biyar.",
+          "references": [
+            {
+              "collection": "tirmidhi",
+              "hadith": "761"
+            }
+          ]
+        },
+        {
+          "intro": "Abdullahi bn Amr bn Al-Aas (ra) ya ruwaito:",
+          "quote": "Kuma ya ishe ka ka azumci kwana uku a kowane wata, domin ladan aikin alheri yana ninka har sau goma, don haka zai zama kamar azumi na tsawon shekara.",
+          "references": [
+            {
+              "collection": "bukhari",
+              "hadith": "1975"
+            }
+          ]
+        },
+        {
+          "intro": "Abu Qatada (ra) ya ruwaito Manzon Allah (s.a.w) ya ce:",
+          "quote": "Azumin kwanaki uku a kowane wata da na Ramadan a kowace shekara shi ne azumi na dindindin.",
+          "references": [
+            {
+              "collection": "muslim",
+              "hadith": "1162"
+            }
+          ]
+        },
+        {
+          "intro": "Manzon Allah (s.a.w) ya gaya wa Aba Zarr (ra):",
+          "quote": "Azumin kwanaki uku na kowane wata kamar azumin shekara ce.",
+          "references": [
+            {
+              "collection": "ibnmajah",
+              "hadith": "1708"
+            }
+          ]
+        },
+        {
+          "intro": "An ruwaito daga Jarir bn Abdullah (ra) cewa Annabi (s.a.w) ya ce:",
+          "quote": "Azumin kwanaki uku na kowane wata azumin shekara ce, kuma kwanakin fari masu haske, su ne goma sha uku, goma sha huɗu, da goma sha biyar.",
+          "references": [
+            {
+              "collection": "nasai",
+              "hadith": "2420"
+            }
+          ]
+        },
+        {
+          "intro": "Abu Huraira (ra) ya ruwaito:",
+          "quote": "Abokina na kurkusa (Annabi Muhammad) ya shawarce ni da abubuwa uku: in azumci kwana uku a kowane wata, in yi raka'a biyu na Duha, da in yi sallar witr kafin in kwanta.",
+          "references": [
+            {
+              "collection": "bukhari",
+              "hadith": "1981"
+            }
+          ]
+        },
+        {
+          "intro": "Abu Darda' (ra) ya ruwaito Annabi (s.a.w) ya ce:",
+          "quote": "Abokina ya umarce ni da ayyuka uku da ba zan taɓa barin su ba: ya umarce ni da azumin kwanaki uku a kowane wata, da kada in yi barci sai bayan na yi witr, da kuma yin sallar lahira (Duha) a cikin tafiya da zamana.",
+          "references": [
+            {
+              "collection": "abudawud",
+              "hadith": "1433"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-monday-thursday": {
+      "title": "Litinin da Alhamis",
+      "cites": [
+        {
+          "intro": "Wannan magana ta musamman daga Abu Hurairah (ra) ya ce:",
+          "quote": "Ana gabatar da ayyuka a ranakun Litinin da Alhamis, kuma ina son a gabatar da ayyukana alhali ina azumi.",
+          "references": [
+            {
+              "collection": "tirmidhi",
+              "hadith": "747"
+            },
+            {
+              "collection": "riyadussalihin",
+              "hadith": "1256"
+            }
+          ]
+        },
+        {
+          "intro": "Usamah bn Zaid (ra) ya ruwaito Manzon Allah (s.a.w) ya ce:",
+          "quote": "Waɗannan kwanaki biyu ne da ake gabatar da ayyuka ga Ubangijin talikai, kuma ina son a gabatar da ayyukana alhali ina azumi.",
+          "references": [
+            {
+              "collection": "nasai",
+              "hadith": "2358"
+            }
+          ]
+        },
+        {
+          "intro": "Abu Qatada al-Ansari (ra) ya tambayi Annabi (s.a.w) game da azumin Litinin, sai ya ce:",
+          "quote": "Ranar da aka haife ni ce, kuma ranar da aka aiko ni da annabci ko aka saukar mini da wahayi.",
+          "references": [
+            {
+              "collection": "muslim",
+              "hadith": "1162b"
+            }
+          ]
+        },
+        {
+          "intro": "Aishah (ra) ta ruwaito:",
+          "quote": "Annabi (s.a.w) ya kasance mai himma wajen azumin Litinin da Alhamis.",
+          "references": [
+            {
+              "collection": "tirmidhi",
+              "hadith": "745"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "errors": {
+    "locationAccess": "Kuskure wajen samun wuri:"
+  }
+}
