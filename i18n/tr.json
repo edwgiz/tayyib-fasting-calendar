@@ -1,0 +1,284 @@
+{
+  "hadithReferencing": {
+    "collections": {
+      "bukhari": "Sahih-i Buhârî",
+      "muslim": "Sahih-i Müslim",
+      "ibnmajah": "Sünen-i İbn Mâce",
+      "tirmidhi": "Câmi‘u’t-Tirmizî",
+      "nasai": "Sünen-i Nesâî",
+      "abudawud": "Sünen-i Ebû Dâvûd",
+      "riyadussalihin": "Riyâzü’s-Sâlihîn"
+    }
+  },
+  "head": {
+    "title": "İslamî Oruç Takvimi",
+    "fastingReasons": {
+      "generic": {
+        "cites": [
+          {
+            "quote": "Âdemoğlunun her ameli kendisi içindir, oruç bundan müstesnadır; çünkü o Benim içindir ve onun mükâfatını Ben vereceğim.",
+            "references": [
+              {
+                "collection": "bukhari",
+                "hadith": "1904"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "settings": {
+    "location": "Konum",
+    "change": "Değiştir",
+    "timeZone": "Saat dilimi",
+    "changeLocationWindowTitle": "Konumu Değiştir",
+    "save": "Tamam",
+    "default": "Varsayılan"
+  },
+  "calendar": {
+    "currentMonth": "İçinde Bulunduğumuz Ay",
+    "sunrise": "Gündoğumu",
+    "sunset": "Günbatımı",
+    "months": {
+      "01": "Muharrem",
+      "02": "Safer",
+      "03": "Rebîülevvel",
+      "04": "Rebîülahir",
+      "05": "Cemâziyelevvel",
+      "06": "Cemâziyelâhir",
+      "07": "Receb",
+      "08": "Şâban",
+      "09": "Ramazan",
+      "10": "Şevval",
+      "11": "Zilkade",
+      "12": "Zilhicce"
+    }
+  },
+  "fastingReasons": {
+    "fasting-reason-ramadan": {
+      "title": "Ramazan",
+      "cites": [
+        {
+          "quote": "İslam beş temel üzerine kurulmuştur: Allah’tan başka ilah olmadığına ve Muhammed’in Allah’ın resulü olduğuna şahitlik etmek, namazı dosdoğru kılmak, zekât vermek, hacca gitmek ve Ramazan orucunu tutmak.",
+          "references": [
+            {
+              "collection": "bukhari",
+              "hadith": "8"
+            },
+            {
+              "collection": "muslim",
+              "hadith": "16"
+            }
+          ]
+        },
+        {
+          "quote": "Kim iman ederek ve sevabını yalnızca Allah’tan umarak Ramazan orucunu tutarsa, geçmiş günahları bağışlanır.",
+          "references": [
+            {
+              "collection": "bukhari",
+              "hadith": "38"
+            },
+            {
+              "collection": "muslim",
+              "hadith": "760"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-shawwal": {
+      "title": "Şevval Ayında Altı Gün Oruç",
+      "cites": [
+        {
+          "quote": "Kim bayramdan sonra (Şevval’de) altı gün oruç tutarsa, bütün bir yılı oruçlu geçirmiş gibi olur. Çünkü her iyiliğe on katı sevap verilir.",
+          "references": [
+            {
+              "collection": "ibnmajah",
+              "hadith": "1715"
+            }
+          ]
+        },
+        {
+          "quote": "Kim Ramazan’ı tutar ve ardından Şevval’den altı gün oruç tutarsa, bütün bir yıl oruç tutmuş gibidir.",
+          "references": [
+            {
+              "collection": "ibnmajah",
+              "hadith": "1716"
+            }
+          ]
+        },
+        {
+          "quote": "Kim Ramazan orucunu tutar ve ardından Şevval’den altı gün tutarsa, senenin tamamını oruçlu geçirmiş gibidir.",
+          "references": [
+            {
+              "collection": "muslim",
+              "hadith": "1164"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-arafah-or-ashura": {
+      "title": "Arefe ve Aşûra Günleri",
+      "cites": [
+        {
+          "intro": "Ebû Katâde (ra) rivayet ediyor: Rasûlullah (sav) şöyle buyurdu:",
+          "quote": "Arefe günü tutulan orucun, bir önceki ve bir sonraki yılın günahlarına keffaret olacağını Allah’tan umarım. Aşûra günü tutulan orucun ise bir önceki yılın günahlarına keffaret olacağını umarım.",
+          "references": [
+            {
+              "collection": "muslim",
+              "hadith": "1162"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-first-9-dhu-al-hijjah": {
+      "title": "Zilhicce’nin İlk Dokuz Günü",
+      "cites": [
+        {
+          "intro": "Peygamber (sav) eşlerinden biri (ra) şöyle dedi:",
+          "quote": "Rasûlullah (sav), Zilhicce’nin ilk dokuz günü, Aşûra günü ve her aydan üç gün oruç tutardı…",
+          "references": [
+            {
+              "collection": "abudawud",
+              "hadith": "2437"
+            },
+            {
+              "collection": "nasai",
+              "hadith": "2417"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-white-days": {
+      "title": "Beyaz Günler (Eyyâm-ı Bîz)",
+      "cites": [
+        {
+          "intro": "Peygamber (sav) Ebû Zerr’e (ra) şöyle tavsiyede bulundu:",
+          "quote": "Aydan herhangi bir günde oruç tutacak olursan, onüç, ondört ve onbeşinci günlerde tut.",
+          "references": [
+            {
+              "collection": "tirmidhi",
+              "hadith": "761"
+            }
+          ]
+        },
+        {
+          "intro": "Abdullah bin Amr bin Âs (ra) rivayet ediyor:",
+          "quote": "Her aydan üç gün oruç tutman sana yeterlidir. Çünkü iyiliğe on katı mükâfat vardır, bu da senenin tamamını oruçlu geçirmek gibidir.",
+          "references": [
+            {
+              "collection": "bukhari",
+              "hadith": "1975"
+            }
+          ]
+        },
+        {
+          "intro": "Ebû Katâde (ra) rivayet ediyor: Rasûlullah (sav) şöyle buyurdu:",
+          "quote": "Her ay üç gün oruç tutmak, yıl boyunca oruç tutmak gibidir. Ramazan’dan Ramazan’a kadar (farz orucu da ekleyince) bütün yıl oruç tutmuş sayılırsın.",
+          "references": [
+            {
+              "collection": "muslim",
+              "hadith": "1162"
+            }
+          ]
+        },
+        {
+          "intro": "Ebû Zerr (ra) rivayet ediyor: Rasûlullah (sav) şöyle buyurdu:",
+          "quote": "Her aydan üç gün oruç tutmak, senenin tamamını oruçlu geçirmek gibidir.",
+          "references": [
+            {
+              "collection": "ibnmajah",
+              "hadith": "1708"
+            }
+          ]
+        },
+        {
+          "intro": "Cerîr b. Abdullah’tan (ra) rivayetle: Nebî (sav) şöyle buyurdu:",
+          "quote": "Her aydan üç gün oruç tutmak, yıl boyunca oruç tutmak demektir. Parlak günler (Eyyâm-ı Bîz) ise ayın onüç, ondört ve onbeşinci günleridir.",
+          "references": [
+            {
+              "collection": "nasai",
+              "hadith": "2420"
+            }
+          ]
+        },
+        {
+          "intro": "Ebû Hüreyre (ra) rivayet ediyor:",
+          "quote": "Dostum (sav) bana üç şey tavsiye etti: Her aydan üç gün oruç tutmak, kuşluk namazını kılmak ve uyumadan önce vitir namazı kılmak.",
+          "references": [
+            {
+              "collection": "bukhari",
+              "hadith": "1981"
+            }
+          ]
+        },
+        {
+          "intro": "Ebû’d-Derdâ (ra) rivayet ediyor:",
+          "quote": "Dostum (sav) bana üç şey tavsiye etti ki onları asla terk etmedim: Her aydan üç gün oruç tutmayı, kuşluk namazını kılmayı ve vitir namazını kılmadan uyumamayı.",
+          "references": [
+            {
+              "collection": "abudawud",
+              "hadith": "1433"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-monday-thursday": {
+      "title": "Pazartesi ve Perşembe",
+      "cites": [
+        {
+          "intro": "Ebû Hüreyre (ra) şöyle rivayet ediyor: Rasûlullah (sav) buyurdu ki:",
+          "quote": "Ameller pazartesi ve perşembe günleri Allah’a arz edilir. Ben de amellerimin bana arz edilmesini oruçlu iken severim.",
+          "references": [
+            {
+              "collection": "tirmidhi",
+              "hadith": "747"
+            },
+            {
+              "collection": "riyadussalihin",
+              "hadith": "1256"
+            }
+          ]
+        },
+        {
+          "intro": "Üsâme b. Zeyd (ra) rivayet ediyor: Rasûlullah (sav) şöyle buyurdu:",
+          "quote": "Şu iki gün, âlemlerin Rabbine amellerin sunulduğu günlerdir. Amelimin oruçlu iken sunulmasını severim.",
+          "references": [
+            {
+              "collection": "nasai",
+              "hadith": "2358"
+            }
+          ]
+        },
+        {
+          "intro": "Ebû Katâde el-Ensârî (ra) anlatıyor: Nebi (sav)’e pazartesi günü oruç tutması sorulduğunda şöyle buyurdu:",
+          "quote": "O gün benim doğduğum gündür. Yine o gün peygamber olarak görevlendirildim –ya da bana vahiy o gün indirilmeye başlandı.",
+          "references": [
+            {
+              "collection": "muslim",
+              "hadith": "1162b"
+            }
+          ]
+        },
+        {
+          "intro": "Âişe (ra) şöyle dedi:",
+          "quote": "Peygamber (sav), pazartesi ve perşembe günleri oruç tutmaya özen gösterirdi.",
+          "references": [
+            {
+              "collection": "tirmidhi",
+              "hadith": "745"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "errors": {
+    "locationAccess": "Konum alınırken hata oluştu:"
+  }
+}
