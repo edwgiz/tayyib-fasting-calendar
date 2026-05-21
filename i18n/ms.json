@@ -1,0 +1,284 @@
+{
+  "hadithReferencing": {
+    "collections": {
+      "bukhari": "Sahih al-Bukhari",
+      "muslim": "Sahih Muslim",
+      "ibnmajah": "Sunan Ibn Majah",
+      "tirmidhi": "Jami` at-Tirmidhi",
+      "nasai": "Sunan an-Nasa'i",
+      "abudawud": "Sunan Abi Dawud",
+      "riyadussalihin": "Riyad as-Salihin"
+    }
+  },
+  "head": {
+    "title": "Kalendar Puasa Islam",
+    "fastingReasons": {
+      "generic": {
+        "cites": [
+          {
+            "quote": "Setiap amalan anak Adam adalah untuknya kecuali puasa; ia untuk-Ku, dan Aku sendiri yang akan membalasnya.",
+            "references": [
+              {
+                "collection": "bukhari",
+                "hadith": "1904"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "settings": {
+    "location": "Lokasi",
+    "change": "Ubah",
+    "timeZone": "Zon waktu",
+    "changeLocationWindowTitle": "Ubah Lokasi",
+    "save": "Ok",
+    "default": "Asal"
+  },
+  "calendar": {
+    "currentMonth": "Bulan Semasa",
+    "sunrise": "Syuruk",
+    "sunset": "Maghrib",
+    "months": {
+      "01": "Muharram",
+      "02": "Safar",
+      "03": "Rabiʻul Awwal",
+      "04": "Rabiʻul Akhir",
+      "05": "Jamadil Awwal",
+      "06": "Jamadil Akhir",
+      "07": "Rajab",
+      "08": "Syaʻban",
+      "09": "Ramadan",
+      "10": "Syawal",
+      "11": "Zulkaedah",
+      "12": "Zulhijjah"
+    }
+  },
+  "fastingReasons": {
+    "fasting-reason-ramadan": {
+      "title": "Ramadan",
+      "cites": [
+        {
+          "quote": "Islam dibina di atas lima perkara: persaksian bahawa tiada tuhan yang berhak disembah melainkan Allah dan bahawa Muhammad itu pesuruh Allah, mendirikan solat, menunaikan zakat, mengerjakan haji, dan berpuasa di bulan Ramadan.",
+          "references": [
+            {
+              "collection": "bukhari",
+              "hadith": "8"
+            },
+            {
+              "collection": "muslim",
+              "hadith": "16"
+            }
+          ]
+        },
+        {
+          "quote": "Barangsiapa berpuasa Ramadan kerana iman dan mengharapkan pahala, maka akan diampuni dosa-dosanya yang telah lalu.",
+          "references": [
+            {
+              "collection": "bukhari",
+              "hadith": "38"
+            },
+            {
+              "collection": "muslim",
+              "hadith": "760"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-shawwal": {
+      "title": "Enam Hari di Bulan Syawal",
+      "cites": [
+        {
+          "quote": "Barangsiapa berpuasa enam hari selepas (Hari Raya) Fitrah, maka genaplah pahala setahun, kerana setiap kebaikan dibalas sepuluh kali ganda.",
+          "references": [
+            {
+              "collection": "ibnmajah",
+              "hadith": "1715"
+            }
+          ]
+        },
+        {
+          "quote": "Barangsiapa berpuasa Ramadan kemudian mengikutinya dengan enam hari di bulan Syawal, seolah-olah dia berpuasa sepanjang masa.",
+          "references": [
+            {
+              "collection": "ibnmajah",
+              "hadith": "1716"
+            }
+          ]
+        },
+        {
+          "quote": "Barangsiapa berpuasa bulan Ramadan dan kemudian mengikutinya dengan enam hari puasa di bulan Syawal, maka seolah-olah dia berpuasa sepanjang tahun.",
+          "references": [
+            {
+              "collection": "muslim",
+              "hadith": "1164"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-arafah-or-ashura": {
+      "title": "Hari ‘Arafah dan ‘Asyura",
+      "cites": [
+        {
+          "intro": "Abu Qatadah (ra) meriwayatkan bahawa Rasulullah Muhammad (saw) bersabda:",
+          "quote": "Aku mengharapkan dari Allah agar puasa pada hari ‘Arafah dapat menghapuskan dosa setahun yang lalu dan setahun yang akan datang, dan aku mengharapkan dari Allah agar puasa pada hari ‘Asyura dapat menghapuskan dosa setahun yang lalu.",
+          "references": [
+            {
+              "collection": "muslim",
+              "hadith": "1162"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-first-9-dhu-al-hijjah": {
+      "title": "Sembilan hari pertama Zulhijjah",
+      "cites": [
+        {
+          "intro": "Salah seorang isteri (ra) Nabi Muhammad (saw) berkata:",
+          "quote": "Rasulullah Muhammad biasa berpuasa pada sembilan hari pertama Zulhijjah, pada hari ‘Asyura, dan tiga hari setiap bulan…",
+          "references": [
+            {
+              "collection": "abudawud",
+              "hadith": "2437"
+            },
+            {
+              "collection": "nasai",
+              "hadith": "2417"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-white-days": {
+      "title": "Hari-Hari Putih (Ayyamul Bidh)",
+      "cites": [
+        {
+          "intro": "Nabi Muhammad (saw) menasihati Abu Dharr (ra):",
+          "quote": "Jika engkau berpuasa pada mana-mana bahagian bulan, maka berpuasalah pada hari ketiga belas, keempat belas, dan kelima belas.",
+          "references": [
+            {
+              "collection": "tirmidhi",
+              "hadith": "761"
+            }
+          ]
+        },
+        {
+          "intro": "Diriwayatkan oleh `Abdullah bin `Amr bin Al-`As (ra):",
+          "quote": "Cukuplah bagimu berpuasa tiga hari dalam sebulan, kerana pahala satu kebaikan dilipatgandakan sepuluh kali ganda, maka seolah-olah engkau berpuasa sepanjang tahun.",
+          "references": [
+            {
+              "collection": "bukhari",
+              "hadith": "1975"
+            }
+          ]
+        },
+        {
+          "intro": "Abu Qatadah (ra) meriwayatkan bahawa Rasulullah (saw) bersabda:",
+          "quote": "Puasa tiga hari setiap bulan dan puasa Ramadan setiap tahun adalah ibarat puasa sepanjang masa (dahr).",
+          "references": [
+            {
+              "collection": "muslim",
+              "hadith": "1162"
+            }
+          ]
+        },
+        {
+          "intro": "Rasulullah (saw) bersabda kepada Abu Dharr (ra):",
+          "quote": "Puasa tiga hari setiap bulan adalah seperti puasa sepanjang masa.",
+          "references": [
+            {
+              "collection": "ibnmajah",
+              "hadith": "1708"
+            }
+          ]
+        },
+        {
+          "intro": "Diriwayatkan dari Jarir bin 'Abdullah (ra) bahawa Nabi (saw) bersabda:",
+          "quote": "Puasa tiga hari setiap bulan adalah puasa sepanjang masa, dan itulah hari-hari yang terang (al-Bid): ketiga belas, keempat belas dan kelima belas.",
+          "references": [
+            {
+              "collection": "nasai",
+              "hadith": "2420"
+            }
+          ]
+        },
+        {
+          "intro": "Diriwayatkan oleh Abu Hurairah (ra):",
+          "quote": "Sahabat karibku (Nabi Muhammad) telah mewasiatkan tiga perkara kepadaku: berpuasa tiga hari setiap bulan, menunaikan solat Dhuha dua rakaat, dan mengerjakan solat Witir sebelum tidur.",
+          "references": [
+            {
+              "collection": "bukhari",
+              "hadith": "1981"
+            }
+          ]
+        },
+        {
+          "intro": "Abu Ad-Darda' (ra) melaporkan bahawa Nabi (saw) bersabda:",
+          "quote": "Sahabat karibku (Nabi) mewasiatkan aku supaya melakukan tiga perkara yang tidak pernah aku tinggalkan: dia mewasiatkan aku agar berpuasa tiga hari setiap bulan, tidak tidur melainkan setelah mengerjakan solat Witir, dan mengerjakan solat sunat Dhuha baik ketika bermusafir mahupun bermukim.",
+          "references": [
+            {
+              "collection": "abudawud",
+              "hadith": "1433"
+            }
+          ]
+        }
+      ]
+    },
+    "fasting-reason-monday-thursday": {
+      "title": "Hari Isnin dan Khamis",
+      "cites": [
+        {
+          "intro": "Hadis riwayat Abu Hurairah (ra):",
+          "quote": "Amalan-amalan itu dipamerkan pada hari Isnin dan Khamis, dan aku suka amalanku dipamerkan ketika aku sedang berpuasa.",
+          "references": [
+            {
+              "collection": "tirmidhi",
+              "hadith": "747"
+            },
+            {
+              "collection": "riyadussalihin",
+              "hadith": "1256"
+            }
+          ]
+        },
+        {
+          "intro": "Usamah bin Zaid (ra) meriwayatkan bahawa Rasulullah (saw) bersabda:",
+          "quote": "Itulah dua hari yang amalan-amalan dipamerkan kepada Tuhan sekalian alam, dan aku suka amalanku dipamerkan ketika aku sedang berpuasa.",
+          "references": [
+            {
+              "collection": "nasai",
+              "hadith": "2358"
+            }
+          ]
+        },
+        {
+          "intro": "Abu Qatadah al-Ansari (ra) bertanya kepada Nabi (saw) tentang puasa hari Isnin, lalu baginda bersabda:",
+          "quote": "Itulah hari aku dilahirkan, hari aku diangkat menjadi nabi atau hari diturunkannya wahyu kepadaku.",
+          "references": [
+            {
+              "collection": "muslim",
+              "hadith": "1162b"
+            }
+          ]
+        },
+        {
+          "intro": "Aisyah (ra) meriwayatkan:",
+          "quote": "Nabi (saw) sangat bersungguh-sungguh berpuasa pada hari Isnin dan Khamis.",
+          "references": [
+            {
+              "collection": "tirmidhi",
+              "hadith": "745"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "errors": {
+    "locationAccess": "Ralat mendapatkan lokasi:"
+  }
+}
