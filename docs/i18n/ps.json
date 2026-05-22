@@ -278,6 +278,15 @@
       ]
     }
   },
+  "lastLine": {
+    "contacts": {
+      "label": "اړیکې",
+      "githubRefDescription": "مهرباني وکړئ د مسلو، ځانګړنو غوښتنو، یا ونډو لپاره GitHub ته مراجعه وکړئ"
+    },
+    "attributions": {
+      "label": "منسوبونې"
+    }
+  },
   "errors": {
     "locationAccess": "د ځای د ترلاسه کولو تېروتنه:"
   }

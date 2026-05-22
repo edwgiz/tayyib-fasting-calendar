@@ -278,6 +278,15 @@
       ]
     }
   },
+  "lastLine": {
+    "contacts": {
+      "label": "Kişiler",
+      "githubRefDescription": "Lütfen sorunlar, özellik istekleri veya katkılar için GitHub'u ziyaret edin"
+    },
+    "attributions": {
+      "label": "Atıflar"
+    }
+  },
   "errors": {
     "locationAccess": "Konum alınırken hata oluştu:"
   }

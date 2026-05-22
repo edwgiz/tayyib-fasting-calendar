@@ -278,6 +278,15 @@
       ]
     }
   },
+  "lastLine": {
+    "contacts": {
+      "label": "Kontak",
+      "githubRefDescription": "Silakan kunjungi GitHub untuk masalah, permintaan fitur, atau kontribusi"
+    },
+    "attributions": {
+      "label": "Atribusi"
+    }
+  },
   "errors": {
     "locationAccess": "Kesalahan mendapatkan lokasi:"
   }

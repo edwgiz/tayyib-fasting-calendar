@@ -7,6 +7,9 @@
 This project helps the Ummah follow a fasting schedule based on the Sunnah of the Prophet Muhammad (peace be upon him),
 including obligatory, voluntary, and prohibited fasting days.
 
+https://calendar.tayyiba.live
+
+
 ## Health benefits
 
 Many people today are interested in health, longevity, and wellbeing through
@@ -15,6 +18,7 @@ for the body and mind.
 
 This project encourages following the Sunnah in fasting, as Muslims believe that Allah, our Creator, knows what is best
 for us.
+
 
 ## Precautions
 

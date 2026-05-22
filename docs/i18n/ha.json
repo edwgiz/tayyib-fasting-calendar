@@ -278,6 +278,15 @@
       ]
     }
   },
+  "lastLine": {
+    "contacts": {
+      "label": "Abokan hulɗa",
+      "githubRefDescription": "Don Allah ziyarci GitHub don matsaloli, buƙatun fasali, ko gudummawa"
+    },
+    "attributions": {
+      "label": "Girmamawa"
+    }
+  },
   "errors": {
     "locationAccess": "Kuskure wajen samun wuri:"
   }

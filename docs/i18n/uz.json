@@ -278,6 +278,15 @@
       ]
     }
   },
+  "lastLine": {
+    "contacts": {
+      "label": "Kontaktlar",
+      "githubRefDescription": "Iltimos, muammolar, xususiyat so'rovlari yoki hissalar uchun GitHub'ga tashrif buyuring"
+    },
+    "attributions": {
+      "label": "Atributlar"
+    }
+  },
   "errors": {
     "locationAccess": "Joylashuvni olishda xato:"
   }

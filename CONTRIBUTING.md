@@ -8,7 +8,8 @@ Assalamu Alaikum,
 
 Thank you for your interest in contributing to the Islamic Fasting Calendar project. Any help is greatly appreciated.
 
-This project aims to benefit the Ummah by providing accurate and helpful information about fasting according to the Sunnah of the Prophet Muhammad (peace be upon him).
+This project aims to benefit the Ummah by providing accurate and helpful information about fasting according to the
+Sunnah of the Prophet Muhammad (peace be upon him).
 
 ## Ways to Contribute
 
@@ -25,15 +26,37 @@ We welcome contributions in many forms, including:
 
 ## Religious Contributions
 
-If you have knowledge in Islamic studies, Hadith, or Fiqh related to fasting, your feedback and corrections are especially valuable. Please help us ensure that the information shared in this project remains respectful, authentic, and beneficial.
+If you have knowledge in Islamic studies, Hadith, or Fiqh related to fasting, your feedback and corrections are
+especially valuable. Please help us ensure that the information shared in this project remains respectful, authentic,
+and beneficial.
 
 ## Technical Contributions
 
-Developers, designers, and open source contributors are welcome to help improve the technical side of the project. Clean code, accessibility, performance, and user experience improvements are always appreciated.
+Developers, designers, and open source contributors are welcome to help improve the technical side of the project. Clean
+code, accessibility, performance, and user experience improvements are always appreciated.
 
 ## Internationalization
 
-We would love to make this project accessible to Muslims around the world. Contributions for translations, localization, and internationalization are highly encouraged.
+We would love to make this project accessible to Muslims around the world. Contributions for translations, localization,
+and internationalization are highly encouraged. Currently supported locales:
+
+| BCP 47 | Language                | Script                 |
+|--------|-------------------------|------------------------|
+| ar     | arabic                  | arabic with diacritics |
+| bn     | bengali                 | bengali-assamese       |
+| en     | english                 | latin                  |
+| fa     | farsi                   | arabic                 |
+| ha     | hausa                   | latin                  |
+| in     | indonesian              | latin                  |
+| jv     | javanese                | latin                  |
+| ms     | malay                   | latin                  |
+| pa     | western panjabi/punjabi | arabic                 |
+| ps     | pashto/pushto           | arabic                 |
+| ru     | russian                 | cyrillic               |
+| tr     | turkish                 | latin                  |
+| ur     | urdu                    | nastaliq               |
+| uz     | uzbek                   | latin                  |
+
 
 ## Before Contributing
 

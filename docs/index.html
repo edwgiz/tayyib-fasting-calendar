@@ -1,9 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="canonical" href="https://calendar.tayyiba.live/"/>
   <meta charset="UTF-8"/>
+  <meta property="og:title" content="Islamic Fasting Calendar"/>
+  <meta property="og:description" content="Track Ramadan, White Days, Monday & Thursday fasting, Ashura and more."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://calendar.tayyiba.live/"/>
+  <meta property="og:image" content="https://calendar.tayyiba.live/logo.svg"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
+  <meta
+    name="description"
+    content="Interactive Islamic fasting calendar with Ramadan, White Days, Monday & Thursday fasting, Ashura, Arafah,
+    Hijri dates, and sunrise/sunset times based on your location."/>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Islamic Fasting Calendar",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Web Browser",
+      "description": "Interactive Islamic fasting calendar with Hijri dates and fasting reminders.",
+      "url": "https://calendar.tayyiba.live/"
+    }
+  </script>
   <link rel="stylesheet" href="https://unpkg.com/smart-webcomponents@26.0.0/source/styles/smart.default.css"
         type="text/css"/>
   <link rel="stylesheet" href="https://unpkg.com/smart-webcomponents@26.0.0/source/styles/smart.dark-green.css"
@@ -20,7 +41,7 @@
   </script>
   <script src="https://unpkg.com/suncalc@1.9.0/suncalc.js"></script>
 
-  <title>Tayyib Fasting Calendar</title>
+  <title>Islamic Fasting Calendar 2026 | Ramadan, Sunnah & Hijri Fasting Days</title>
 
   <style>
     body {
@@ -44,6 +65,23 @@
 
     a:focus-visible {
       outline: 2px solid rgba(138, 180, 248, 0.6);
+    }
+
+    hr {
+      color: var(--smart-border);
+      border-color: var(--smart-border);
+    }
+
+    header > h1 {
+      text-align: center;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        margin-right: 0.4em;
+      }
     }
 
     section.fasting-reason > h4 {
@@ -164,6 +202,30 @@
           background-repeat: no-repeat;
         }
       }
+
+      section#settings {
+        display: grid;
+        grid-template-columns: min-content fit-content(80vw);
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+        font-size: var(--smart-font-size);
+        margin-bottom: 3em;
+
+        .settings-label {
+          white-space: nowrap;
+        }
+      }
+
+      section#fasting-reasons {
+        font-size: small;
+        width: 100%;
+
+        section > h4 {
+          margin-top: 3ch;
+          margin-bottom: 0;
+        }
+      }
     }
 
     #prev-month-button, #next-month-button {
@@ -183,29 +245,6 @@
       text-align: center;
       vertical-align: center;
       white-space: nowrap;
-    }
-
-    footer {
-      font-size: small;
-    }
-
-    footer > section#settings {
-      display: grid;
-      grid-template-columns: min-content fit-content(80vw);
-      justify-content: center;
-      align-items: center;
-      gap: 2em;
-      font-size: var(--smart-font-size);
-      margin-bottom: 3em;
-    }
-
-    .settings-label {
-      white-space: nowrap;
-    }
-
-    footer > section > h4 {
-      margin-top: 3ch;
-      margin-bottom: 0;
     }
 
     smart-tooltip div.smart-tooltip-content {
@@ -272,12 +311,16 @@
       background: var(--smart-base-background-color-dark);
     }
 
-
+    footer {
+      color: var(--smart-base-100);
+      font-size: small;
+    }
   </style>
 </head>
 <body theme="dark">
 <header>
-  <h1 style="text-align: center">
+  <h1>
+    <img alt="Khatim icon" style="height: 2ch; vertical-align: center" src="logo.svg">
     <i18n-text key="head.title"></i18n-text>
   </h1>
 </header>
@@ -288,9 +331,6 @@
     <smart-button id="next-month-button"></smart-button>
   </section>
   <section id="calendar-grid-cells"></section>
-</main>
-
-<footer>
   <section id="settings">
     <div class="settings-label">
       <i18n-text key="settings.location"></i18n-text>
@@ -307,19 +347,42 @@
     </div>
     <div>
       <smart-drop-down-list
-          id='change-tz-dropdown'
-          filterable
-          selection-mode="one"
-          disabled="disabled"
+        id='change-tz-dropdown'
+        filterable
+        selection-mode="one"
+        disabled="disabled"
       ></smart-drop-down-list>
     </div>
   </section>
+  <section id="generic-fasting-reasons"></section>
+  <section id="fasting-reasons"></section>
+</main>
+<hr/>
+<footer>
+  <ul>
+    <li>
+      <i18n-text key="lastLine.contacts.label"></i18n-text>
+      :
+      <a
+        href="https://github.com/edwgiz/tayyib-fasting-calendar"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <i18n-text key="lastLine.contacts.githubRefDescription"></i18n-text>
+      </a>
+    </li>
+    <li>
+      <i18n-text key="lastLine.attributions.label"></i18n-text>
+      :
+      <a href="https://iconscout.com/contributors/rizsign-icon" target="_blank">Rizsign icon</a>
+    </li>
+  </ul>
 </footer>
 
 <smart-window
-    id='change-location-window'
-    header-buttons='["close"]'
-    modal
+  id='change-location-window'
+  header-buttons='["close"]'
+  modal
 ></smart-window>
 
 <script type="module">
@@ -331,8 +394,8 @@
   import {renderFastingReasonSections} from './fasting-reason-section.js';
 
   const d = document;
-  renderFastingReasonSections(d.querySelector('header'), 'head.fastingReasons');
-  await renderFastingReasonSections(d.querySelector('footer'), 'fastingReasons');
+  renderFastingReasonSections(d.getElementById('generic-fasting-reasons'), 'head.fastingReasons');
+  await renderFastingReasonSections(d.getElementById('fasting-reasons'), 'fastingReasons');
 
   const geoPositionRepository = {
     getAsString() {

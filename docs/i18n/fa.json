@@ -278,6 +278,15 @@
       ]
     }
   },
+  "lastLine": {
+    "contacts": {
+      "label": "مخاطبین",
+      "githubRefDescription": "لطفاً برای مشکلات، درخواست‌های ویژگی یا مشارکت‌ها به GitHub مراجعه کنید"
+    },
+    "attributions": {
+      "label": "تقدیرها"
+    }
+  },
   "errors": {
     "locationAccess": "خَطا در دریافت مَکان:"
   }

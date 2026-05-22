@@ -278,6 +278,15 @@
       ]
     }
   },
+  "lastLine": {
+    "contacts": {
+      "label": "কন্টাক্টস",
+      "githubRefDescription": "ইস্যু, বৈশিষ্ট্যের অনুরোধ বা অবদানের জন্য দয়া করে GitHub পরিদর্শন করুন"
+    },
+    "attributions": {
+      "label": "স্বীকৃতি"
+    }
+  },
   "errors": {
     "locationAccess": "অবস্থান পেতে ত্রুটি:"
   }

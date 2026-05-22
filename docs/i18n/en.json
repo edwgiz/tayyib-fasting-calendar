@@ -278,6 +278,15 @@
       ]
     }
   },
+  "lastLine": {
+    "contacts": {
+      "label": "Contacts",
+      "githubRefDescription": "Please visit GitHub for issues, feature requests, or contributions"
+    },
+    "attributions": {
+      "label": "Attributions"
+    }
+  },
   "errors": {
     "locationAccess": "Error getting location:"
   }

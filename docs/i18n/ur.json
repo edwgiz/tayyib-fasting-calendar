@@ -278,6 +278,15 @@
       ]
     }
   },
+  "lastLine": {
+    "contacts": {
+      "label": "رابطے",
+      "githubRefDescription": "براہ کرم مسائل، فیچر کی درخواستوں، یا شراکت کے لیے GitHub ملاحظہ کریں"
+    },
+    "attributions": {
+      "label": "منسوبیاں"
+    }
+  },
   "errors": {
     "locationAccess": "مقام حاصل کرنے میں خرابی:"
   }
