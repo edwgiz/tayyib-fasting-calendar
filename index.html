@@ -121,7 +121,10 @@
 
           div.calendar-grid-cell-hijri-month {
             color: #00b300;
-            font-size: x-small;
+            font-size: small;
+            @media (max-width: 50em) {
+              font-size: x-small;
+            }
             overflow-wrap: break-word;
           }
 
@@ -131,7 +134,10 @@
 
           div.calendar-grid-cell-fasting-undefined {
             color: #b3b300;
-            font-size: x-small;
+            font-size: small;
+            @media (max-width: 50em) {
+              font-size: x-small;
+            }
 
             img.calendar-grid-cell-fasting-undefined-spinner {
               width: 0.5em;
@@ -141,7 +147,10 @@
 
           div.calendar-grid-cell-fasting {
             color: #ffff00;
-            font-size: x-small;
+            font-size: small;
+            @media (max-width: 50em) {
+              font-size: x-small;
+            }
           }
         }
 
