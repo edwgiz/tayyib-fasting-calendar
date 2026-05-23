@@ -734,8 +734,8 @@
         console.error('Error getting location:', error);
       },
       {
-        enableHighAccuracy: true,
-        maximumAge: 0
+        enableHighAccuracy: false,
+        maximumAge: 3600000 // 1 hour
       }
     );
   }
