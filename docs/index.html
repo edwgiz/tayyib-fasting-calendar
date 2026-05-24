@@ -205,6 +205,10 @@
           background-position: center;
           background-repeat: no-repeat;
         }
+
+        div.calendar-grid-cell-adjacent-month {
+          color: var(--smart-base-100)
+        }
       }
 
       section#settings {
@@ -424,9 +428,9 @@
   };
 
 
-  const now = new Date();
-  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  let month = new Date(now.getFullYear(), now.getMonth(), 2);
+  const today = new Date();
+  let month = new Date(today);
+  month.setUTCDate(2);
 
   const getTimezoneUsecase = {
     apply() {
@@ -439,20 +443,30 @@
   function updateDatetimeFormats() {
     const tzValue = getTimezoneUsecase.apply();
     datetimeFormats = {
-      month: new Intl.DateTimeFormat(locale, {
+      monthLabel: new Intl.DateTimeFormat(locale, {
         timeZone: tzValue,
         month: 'long',
         year: 'numeric'
       }),
-      dateId: new Intl.DateTimeFormat(locale, {
+      yearNumber: new Intl.DateTimeFormat(locale, {
         timeZone: tzValue,
         year: 'numeric',
+      }),
+      monthNumber: new Intl.DateTimeFormat(locale, {
+        timeZone: tzValue,
         month: '2-digit',
-        day: '2-digit',
       }),
       date: new Intl.DateTimeFormat(locale, {
         timeZone: tzValue,
         day: '2-digit',
+      }),
+      utcWeekday: new Intl.DateTimeFormat(locale, {
+        timeZone: 'UTC',
+        weekday: 'short',
+      }),
+      weekday: new Intl.DateTimeFormat(locale, {
+        timeZone: tzValue,
+        weekday: 'short',
       }),
       hijriDate: new Intl.DateTimeFormat(locale, {
         calendar: "islamic",
@@ -487,19 +501,21 @@
   const nextMonthEl = d.getElementById('next-month-button');
 
   function updateMonthLabels() {
-    const prevMonth = new Date(month.getFullYear(), month.getMonth() - 1, 2);
-    const nextMonth = new Date(month.getFullYear(), month.getMonth() + 1, 2);
-    prevMonthEl.innerHTML = datetimeFormats.month.format(prevMonth) + '&nbsp; ◂◂';
-    currentMonthEl.textContent = datetimeFormats.month.format(month);
-    nextMonthEl.innerHTML = '▸▸ &nbsp;' + datetimeFormats.month.format(nextMonth);
+    const prevMonth = new Date(month);
+    prevMonth.setUTCMonth(month.getUTCMonth() - 1);
+    const nextMonth = new Date(month);
+    nextMonth.setUTCMonth(month.getUTCMonth() + 1);
+    prevMonthEl.innerHTML = datetimeFormats.monthLabel.format(prevMonth) + '&nbsp; ◂◂';
+    currentMonthEl.textContent = datetimeFormats.monthLabel.format(month);
+    nextMonthEl.innerHTML = '▸▸ &nbsp;' + datetimeFormats.monthLabel.format(nextMonth);
   }
 
   prevMonthEl.addEventListener('click', _ => {
-    month = new Date(month.getFullYear(), month.getMonth() - 1, 2);
+    month.setUTCMonth(month.getUTCMonth() - 1);
     update();
   });
   nextMonthEl.addEventListener('click', _ => {
-    month = new Date(month.getFullYear(), month.getMonth() + 1, 2);
+    month.setUTCMonth(month.getUTCMonth() + 1);
     update();
   });
 
@@ -515,22 +531,21 @@
 
   let firstDayOfWeek = getFirstDayOfWeek();
 
-
   const gridEl = d.getElementById('calendar-grid-cells');
+
+  const weekdayIndexes = {};
 
   function updateCalendarHeader() {
     gridEl.innerHTML = '';
-    const weekdayFormat = new Intl.DateTimeFormat(locale, {
-      timeZone: getTimezoneUsecase.apply(),
-      weekday: 'short'
-    });
 
+    const date = new Date(Date.UTC(2024, 0, 6 + firstDayOfWeek % 7));
     for (let i = 0; i < 7; i++) {
-      const dayIndex = (i + firstDayOfWeek) % 7;
-      const date = new Date(2024, 0, dayIndex + 7);
+      date.setUTCDate(date.getUTCDate() + 1);
       const cellEl = d.createElement('div');
       cellEl.classList.add("calendar-grid-header")
-      cellEl.textContent = weekdayFormat.format(date);
+      const weekdayName = datetimeFormats.utcWeekday.format(date);
+      weekdayIndexes[weekdayName] = i;
+      cellEl.textContent = weekdayName;
       gridEl.appendChild(cellEl);
     }
   }
@@ -575,24 +590,46 @@
     return true;
   }
 
-  async function updateCalendarDates() {
+  function getWeekdayIndex(date) {
+    let weekdayName = datetimeFormats.weekday.format(date);
+    return weekdayIndexes[weekdayName];
+  }
 
-    let date = new Date(month.getFullYear(), month.getMonth(), month.getDate() - month.getDay() + firstDayOfWeek);
+  function getDateId(date) {
+    return datetimeFormats.yearNumber.format(date) + '-'
+      + datetimeFormats.monthNumber.format(date) + '-'
+      + datetimeFormats.date.format(date);
+  }
+
+  async function updateCalendarDates() {
+    const todayDateId = getDateId(today);
+    const activeMonthNumber = datetimeFormats.monthNumber.format(month);
+
+    let date = new Date(month);
+    const weekdayIndex = getWeekdayIndex(month);
+    date.setDate(month.getDate() - weekdayIndex + firstDayOfWeek);
 
     for (let i = gridEl.children.length - 1; i >= 7; i--) {
       gridEl.children.item(i).remove();
     }
 
-    const geoPosition = geoPositionRepository.get()
-
-    while (date.getFullYear() * 1000 + date.getMonth() <= month.getFullYear() * 1000 + month.getMonth()) {
+    const geoPosition = geoPositionRepository.get();
+    for (let w = 0; w < 6; w++) {
       for (let i = 0; i < 7; i++) {
-        const id = 'calendar-grid-cell-' + datetimeFormats.dateId.format(date);
+        const isAdjacentMonth = activeMonthNumber !== datetimeFormats.monthNumber.format(date);
+        if (w > 0 && i === 0 && isAdjacentMonth) {
+          break;
+        }
+        const dateId = getDateId(date);
+        const cellElId = 'calendar-grid-cell-' + dateId;
         const cellEl = d.createElement('div');
-        cellEl.id = id;
+        cellEl.id = cellElId;
         cellEl.classList.add('calendar-grid-cell');
-        if (!(date < today || today < date)) {
+        if (dateId === todayDateId) {
           cellEl.classList.add('calendar-grid-cell-today')
+        }
+        if (isAdjacentMonth) {
+          cellEl.classList.add('calendar-grid-cell-adjacent-month');
         }
         cellEl.appendChild(d.createTextNode(datetimeFormats.date.format(date)));
         const fastingReasons = [];
@@ -660,7 +697,7 @@
           cellEl.appendChild(fastingEl);
 
           const tooltip = d.createElement('smart-tooltip');
-          tooltip.selector = id;
+          tooltip.selector = cellElId;
           tooltip.position = 'bottom';
           tooltip.arrow = true;
           const tooltipContent = d.createElement('ul');
@@ -673,7 +710,7 @@
           cellEl.appendChild(tooltip);
         }
         gridEl.appendChild(cellEl);
-        date = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
+        date.setDate(date.getDate() + 1);
       }
     }
   }
