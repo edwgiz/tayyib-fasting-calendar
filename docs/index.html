@@ -432,7 +432,7 @@
 
   const today = new Date();
   let month = new Date(today);
-  month.setUTCDate(2);
+  month.setDate(2);
 
   const getTimezoneUsecase = {
     apply() {
@@ -607,8 +607,8 @@
     const todayDateId = getDateId(today);
     const activeMonthNumber = datetimeFormats.monthNumber.format(month);
 
-    let date = new Date(month);
     const weekdayIndex = getWeekdayIndex(month);
+    let date = new Date(month);
     date.setDate(month.getDate() - weekdayIndex + firstDayOfWeek);
 
     for (let i = gridEl.children.length - 1; i >= 7; i--) {
@@ -635,43 +635,45 @@
         }
         cellEl.appendChild(d.createTextNode(datetimeFormats.date.format(date)));
         const fastingReasons = [];
-        const hijriMonthNumber = datetimeFormats.hijriMonthNumber.format(date);
+        const hijriDate = new Date(date);
+        hijriDate.setUTCHours(-4);
+        const hijriMonthNumber = datetimeFormats.hijriMonthNumber.format(hijriDate);
         {
-          const hijriDate = datetimeFormats.hijriDate.format(date);
+          const hijriDayNumber = datetimeFormats.hijriDate.format(hijriDate);
           if (hijriMonthNumber === '09') {
             fastingReasons.push('fasting-reason-ramadan');
           }
-          if ((hijriMonthNumber === '12' && hijriDate === '09')// Day of Arafah
-            || (hijriMonthNumber === '01' && hijriDate === '10')// Day of Ashura
+          if ((hijriMonthNumber === '12' && hijriDayNumber === '09')// Day of Arafah
+            || (hijriMonthNumber === '01' && hijriDayNumber === '10')// Day of Ashura
           ) {
             fastingReasons.push('fasting-reason-arafah-or-ashura');
           }
-          if (hijriMonthNumber === '12' && hijriDate < '10') {// First nine days of Dhu al-Hijjah
+          if (hijriMonthNumber === '12' && hijriDayNumber < '10') {// First nine days of Dhu al-Hijjah
             fastingReasons.push('fasting-reason-first-9-dhu-al-hijjah');
           }
           {
             const hijriMonthEl = d.createElement('div');
             hijriMonthEl.classList.add('calendar-grid-cell-hijri-month');
-            let hijriMonth = await i18n('calendar.months.' + hijriMonthNumber);
-            if (hijriMonth.startsWith('calendar.months.')) {
-              hijriMonth = datetimeFormats.hijriMonth.format(date);
+            let hijriMonthName = await i18n('calendar.months.' + hijriMonthNumber);
+            if (hijriMonthName.startsWith('calendar.months.')) {
+              hijriMonthName = datetimeFormats.hijriMonth.format(hijriDate);
             }
-            hijriMonthEl.textContent = hijriMonth;
+            hijriMonthEl.textContent = hijriMonthName;
             cellEl.appendChild(hijriMonthEl);
           }
           {
             const hijriDateEl = d.createElement('div');
             hijriDateEl.classList.add('calendar-grid-cell-hijri-date')
-            if (hijriDate === '13' || hijriDate === '14' || hijriDate === '15') {
-              if (isAllowedFastingDate(hijriMonthNumber, hijriDate)) {
+            if (hijriDayNumber === '13' || hijriDayNumber === '14' || hijriDayNumber === '15') {
+              if (isAllowedFastingDate(hijriMonthNumber, hijriDayNumber)) {
                 fastingReasons.push('fasting-reason-white-days')
               }
             }
-            hijriDateEl.textContent = hijriDate;
+            hijriDateEl.textContent = hijriDayNumber;
             cellEl.appendChild(hijriDateEl);
           }
           if (date.getDay() === 1 || date.getDay() === 4) {
-            if (isAllowedFastingDate(hijriMonthNumber, hijriDate)) {
+            if (isAllowedFastingDate(hijriMonthNumber, hijriDayNumber)) {
               fastingReasons.push('fasting-reason-monday-thursday');
             }
           }
